@@ -115,7 +115,7 @@ def main():
             metadata = str(reader.metadata)
             assert not NON_ENGLISH.search(content + metadata), kind
             assert not LOCAL_PATH.search(content + metadata), kind
-            assert 'NYCU Solid State Physics' in content, kind
+            assert 'NYCU Solid State Physics and Theory' in content, kind
             assert reader.metadata.title and kind[:-1].lower() in reader.metadata.title.lower(), kind
             print(f'PASS: {kind}.pdf, {len(reader.pages)} pages, English text and metadata')
 

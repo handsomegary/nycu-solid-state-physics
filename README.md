@@ -1,4 +1,4 @@
-# NYCU Solid State Physics
+# NYCU Solid State Physics and Theory
 
 English LaTeX reconstructions of eleven Solid State Theory and Solid State Physics exam sets, with a separate book of independently derived, detailed solutions.
 
