@@ -1,0 +1,496 @@
+{
+  "source_file_count": 50,
+  "unique_file_hash_count": 49,
+  "description": "Every supplied file is accounted for. Source identifiers are anonymous. Only typeset questions and independently written solutions are published.",
+  "files": [
+    {
+      "id": "S1-001",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-12-midterm"
+      ],
+      "note": "Reference continuation grouped by its Hartree-Fock content rather than its source folder."
+    },
+    {
+      "id": "S1-002",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-2014-05-midterm"
+      ]
+    },
+    {
+      "id": "S1-003",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm"
+      ]
+    },
+    {
+      "id": "S1-004",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm"
+      ]
+    },
+    {
+      "id": "S1-005",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm"
+      ],
+      "note": "Includes topics used for explicitly labelled supplementary exercises; missing printed questions remain missing."
+    },
+    {
+      "id": "S1-006",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm"
+      ],
+      "note": "Includes topics used for explicitly labelled supplementary exercises; missing printed questions remain missing."
+    },
+    {
+      "id": "S1-007",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm"
+      ],
+      "note": "Includes topics used for explicitly labelled supplementary exercises; missing printed questions remain missing."
+    },
+    {
+      "id": "S1-008",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-2014-12-midterm"
+      ]
+    },
+    {
+      "id": "S1-009",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-2014-12-midterm"
+      ]
+    },
+    {
+      "id": "S1-010",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-12-midterm"
+      ]
+    },
+    {
+      "id": "S1-011",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-12-midterm"
+      ]
+    },
+    {
+      "id": "S1-012",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-12-midterm"
+      ]
+    },
+    {
+      "id": "S1-013",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-2016-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-014",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2016-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-015",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2016-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-016",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2016-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-017",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-018",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-019",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-020",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-021",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-022",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-023",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-024",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2017-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-025",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm",
+        "theory-2014-12-midterm",
+        "theory-2017-04-midterm",
+        "theory-2021-04-midterm",
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-026",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm",
+        "theory-2014-12-midterm",
+        "theory-2017-04-midterm",
+        "theory-2021-04-midterm",
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-027",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm",
+        "theory-2014-12-midterm",
+        "theory-2017-04-midterm",
+        "theory-2021-04-midterm",
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-028",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm",
+        "theory-2014-12-midterm",
+        "theory-2017-04-midterm",
+        "theory-2021-04-midterm",
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-029",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm",
+        "theory-2014-12-midterm",
+        "theory-2017-04-midterm",
+        "theory-2021-04-midterm",
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-030",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm",
+        "theory-2014-12-midterm",
+        "theory-2017-04-midterm",
+        "theory-2021-04-midterm",
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-031",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2014-05-midterm",
+        "theory-2014-12-midterm",
+        "theory-2017-04-midterm",
+        "theory-2021-04-midterm",
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-032",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2016-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-033",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2016-04-midterm"
+      ]
+    },
+    {
+      "id": "S1-034",
+      "collection": 1,
+      "format": "pdf",
+      "role": "mixed question and private reference pages",
+      "exam_ids": [
+        "theory-2021-04-midterm"
+      ],
+      "pages": 8,
+      "page_roles": {
+        "1-2": "printed questions; reconstructed in English",
+        "3": "identity and score cover; excluded from publication",
+        "4-8": "handwritten reference only"
+      }
+    },
+    {
+      "id": "S1-035",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-2020-06-final"
+      ]
+    },
+    {
+      "id": "S1-036",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2020-06-final"
+      ]
+    },
+    {
+      "id": "S1-037",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2020-06-final"
+      ]
+    },
+    {
+      "id": "S1-038",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-2020-06-final"
+      ]
+    },
+    {
+      "id": "S1-039",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-040",
+      "collection": 1,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-041",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-042",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-043",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S1-044",
+      "collection": 1,
+      "format": "photograph",
+      "role": "handwritten reference only",
+      "exam_ids": [
+        "theory-undated-midterm-fragment"
+      ]
+    },
+    {
+      "id": "S2-045",
+      "collection": 2,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "physics-2015-06-final"
+      ]
+    },
+    {
+      "id": "S2-046",
+      "collection": 2,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "physics-2015-04-midterm"
+      ]
+    },
+    {
+      "id": "S2-047",
+      "collection": 2,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "physics-2015-04-midterm"
+      ]
+    },
+    {
+      "id": "S2-048",
+      "collection": 2,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "physics-2017-11-midterm"
+      ]
+    },
+    {
+      "id": "S2-049",
+      "collection": 2,
+      "format": "photograph",
+      "role": "printed question page; reconstructed in English",
+      "exam_ids": [
+        "physics-2017-11-midterm"
+      ]
+    },
+    {
+      "id": "S2-050",
+      "collection": 2,
+      "format": "photograph",
+      "role": "exact duplicate of a printed question photograph; consolidated",
+      "exam_ids": [
+        "physics-2015-06-final"
+      ],
+      "duplicate_of": "S2-045"
+    }
+  ]
+}

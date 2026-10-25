@@ -1,0 +1,296 @@
+\chapter{Solid State Theory: April 26, 2017 --- Solutions}
+\label{s:theory-2017-04-midterm}
+\begin{sourceNote}
+These solutions are independently derived, not an official answer key. Reciprocal vectors satisfy $\mathbf g_i\cdot\mathbf t_j=2\pi\delta_{ij}$. Unless otherwise stated, a density of states is per unit area, per spin, and for the specified band or patch.
+\end{sourceNote}
+
+\section*{1. Translation symmetry and the first Brillouin zone}
+\textbf{(a) False.} Atomic positions in a crystal have the general form
+\[
+\mathbf r_{\ell\alpha}=\mathbf R_\ell+\mathbf d_\alpha,\qquad
+\mathbf R_\ell=\sum_i n_i\mathbf t_i.
+\]
+Atoms occupying the same basis site $\alpha$ in different cells are related by a Bravais translation. However, atoms of the same chemical species can occupy different basis sites. Diamond provides a counterexample: an FCC Bravais lattice with basis $\mathbf d_1=0$ and $\mathbf d_2=(a/4)(1,1,1)$. Both sites are carbon, but their separation is not an FCC translation. Chemical identity does not imply translational equivalence.
+
+\textbf{(b) True.} The first Brillouin zone is the reciprocal-space Wigner-Seitz cell about the origin:
+\[
+\mathcal B_1=\{\mathbf k:\ |\mathbf k|\leq |\mathbf k-\mathbf G|
+\text{ for every reciprocal vector }\mathbf G\}.
+\]
+A point outside this closed region violates at least one inequality. Thus some $\mathbf G\neq0$ satisfies $|\mathbf k-\mathbf G|<|\mathbf k|$. Boundary points can be equidistant from two reciprocal sites; they are not strictly outside the closed first zone.
+
+\section*{2. FCC plane spacing and planar density}
+The primitive volume and reciprocal vectors are
+\[
+\Omega=\mathbf t_1\cdot(\mathbf t_2\times\mathbf t_3)=\frac{a^3}{4},
+\]
+\[
+\mathbf g_1=\frac{2\pi}{a}(-1,1,1),\quad
+\mathbf g_2=\frac{2\pi}{a}(1,-1,1),\quad
+\mathbf g_3=\frac{2\pi}{a}(1,1,-1).
+\]
+Their dot products verify $\mathbf g_i\cdot\mathbf t_j=2\pi\delta_{ij}$. If $\mathbf G=\sum_i m_i\mathbf g_i$ with relatively prime integer coefficients, then
+\[
+\mathbf G\cdot\mathbf R=2\pi\sum_i m_i n_i=2\pi\ell,\qquad \ell\in\mathbb Z.
+\]
+Because $\gcd(m_1,m_2,m_3)=1$, every integer $\ell$ occurs. Successive planes containing lattice points therefore have spacing $2\pi/|\mathbf G|$. A merely parallel vector cannot be substituted without checking its length and integer coefficients.
+
+\subsection*{(a) A normal with half-integer reciprocal coefficients}
+The shortest nonzero reciprocal vector parallel to $\mathbf g_1/2+\mathbf g_2-\mathbf g_3$ is
+\[
+\mathbf G=\mathbf g_1+2\mathbf g_2-2\mathbf g_3
+=\frac{2\pi}{a}(-1,-3,5).
+\]
+The coefficients $(1,2,-2)$ are relatively prime, giving
+\[
+\boxed{d=\frac{2\pi}{|\mathbf G|}=\frac{a}{\sqrt{35}}.}
+\]
+
+\subsection*{(b) Number of lattice points per unit plane area}
+On the plane through the origin, $n_1+2n_2-2n_3=0$. Every in-plane lattice vector is uniquely
+\[
+\mathbf R=n_2\underbrace{(-2\mathbf t_1+\mathbf t_2)}_{\mathbf u}
++n_3\underbrace{(2\mathbf t_1+\mathbf t_3)}_{\mathbf v}.
+\]
+This proves that $\mathbf u,\mathbf v$ form a primitive planar basis, not a supercell. In Cartesian coordinates,
+\[
+\mathbf u=\frac a2(1,-2,-1),\quad
+\mathbf v=\frac a2(1,3,2),\quad
+\mathbf u\times\mathbf v=\frac{a^2}{4}(-1,-3,5).
+\]
+The planar cell has area $A_\parallel=a^2\sqrt{35}/4$ and contains one lattice point. Therefore
+\[
+\boxed{\sigma=\frac{1}{A_\parallel}=\frac{4}{a^2\sqrt{35}}.}
+\]
+As a check, $A_\parallel d=\Omega$, so $\sigma=d/\Omega$. This counts Bravais lattice points. Multiplying again by the four points in an FCC conventional cell would count the cell conversion twice.
+
+\subsection*{(c) A normal in the direct-lattice basis}
+First convert the specified normal to Cartesian coordinates:
+\[
+\mathbf N=\mathbf t_1+2\mathbf t_2-2\mathbf t_3=\frac a2(0,-1,3).
+\]
+For a reciprocal vector $\mathbf G'\parallel\mathbf N$, the integer coefficients have ratio
+\[
+m_1:m_2:m_3=(\mathbf N\cdot\mathbf t_1):
+(\mathbf N\cdot\mathbf t_2):(\mathbf N\cdot\mathbf t_3)=2:3:-1.
+\]
+The shortest such reciprocal vector is
+\[
+\mathbf G'=2\mathbf g_1+3\mathbf g_2-\mathbf g_3
+=\frac{2\pi}{a}(0,-2,6),\qquad
+\boxed{d'=\frac{a}{2\sqrt{10}}.}
+\]
+Independently, the projection of
+$\mathbf R=(a/2)(n_2+n_3,n_1+n_3,n_1+n_2)$
+onto $(0,-1,3)/\sqrt{10}$ is
+$a(2n_1+3n_2-n_3)/(2\sqrt{10})$.
+The numerator takes every integer value. The vector $(2\pi/a)(0,-1,3)$ is not an FCC reciprocal lattice vector; using it would miss the factor of two.
+
+\section*{3. Critical points and local density of states}
+The stated two-dimensional graphite model describes the two $\pi$ bands of a honeycomb layer. Set
+\[
+x=ak_x,\quad y=ak_y,\quad
+h(x,y)=|F_{\mathbf k}|^2
+=1+4\cos(x/2)\cos(\sqrt3y/2)+4\cos^2(x/2).
+\]
+Where $h>0$, $\nabla\epsilon_\pm=\pm\gamma\nabla h/(2\sqrt h)$. At $h=0$, this formula cannot be evaluated by interpreting $0/0$ as zero.
+
+\subsection*{(a) Expansions at the three points}
+\textbf{$\Gamma$: smooth extrema.} With $\mathbf q=\mathbf k$,
+\[
+h=9-\frac32a^2(q_x^2+q_y^2)+O(a^4q^4),\qquad
+|F|=3-\frac14a^2q^2+O(a^4q^4).
+\]
+Thus, with $\alpha=\gamma a^2/4>0$,
+\[
+\epsilon_+=\epsilon_p+3\gamma-\alpha q^2+O(q^4),\qquad
+\epsilon_-=\epsilon_p-3\gamma+\alpha q^2+O(q^4).
+\]
+Both gradients vanish. The upper band has a local maximum, a negative-definite Hessian, and Morse index 2; the lower band has a local minimum, a positive-definite Hessian, and index 0.
+
+\textbf{$Q$: a saddle in each band.} At $(x,y)=(\pi,\pi/\sqrt3)$,
+\[
+h=1,\quad \nabla h=0,\quad
+H_h=\begin{pmatrix}2&\sqrt3\\ \sqrt3&0\end{pmatrix}.
+\]
+Its eigenvalues are $3,-1$, with orthonormal directions
+$\hat{\mathbf u}=(\sqrt3/2,1/2)$ and $\hat{\mathbf v}=(-1/2,\sqrt3/2)$.
+For displacement components $q_u,q_v$,
+\[
+\epsilon_\pm=\epsilon_p\pm\gamma
+\pm\frac{\gamma a^2}{4}(3q_u^2-q_v^2)+O(a^3q^3).
+\]
+The curvatures have opposite signs, so both bands have saddles of index 1. Being on a zone boundary does not invalidate this local classification: the dispersion extends periodically.
+
+\textbf{$P$: a Dirac contact, not an ordinary smooth stationary point.}
+At $(x,y)=(4\pi/3,0)$, $h=0$, while
+\[
+h=\frac34a^2q^2+O(a^3q^3),\qquad
+\epsilon_\pm=\epsilon_p\pm c|\mathbf q|+O(q^2),\qquad
+c=\frac{\sqrt3\gamma a}{2}.
+\]
+The upper band has a conical local minimum and the lower band a conical local maximum, and the bands touch. Each energy-ordered band is nondifferentiable at the cone tip. Its gradient does not exist; it is not a smooth van Hove or Morse stationary point satisfying $\nabla\epsilon=0$. If the term critical point includes band-degeneracy singularities, identify $P$ explicitly as a \emph{Dirac band-contact singularity}. The directional slopes are finite, not infinite. A quadratic-extremum DOS formula is inapplicable.
+
+\begin{center}
+\begin{minipage}{0.95\linewidth}
+\centering
+\begin{tikzpicture}[scale=2.7,>=Stealth]
+\draw[->,gray] (-.85,0)--(.9,0) node[right] {$k_x/(2\pi/a)$};
+\draw[->,gray] (0,-.72)--(0,.78) node[above] {$k_y/(2\pi/a)$};
+\draw[thick,blue!60!black] (2/3,0)--(1/3,.57735)--(-1/3,.57735)--(-2/3,0)--(-1/3,-.57735)--(1/3,-.57735)--cycle;
+\fill (0,0) circle(.018) node[below left] {$\Gamma$};
+\fill (.5,.288675) circle(.018) node[above right] {$Q$};
+\fill (2/3,0) circle(.018) node[below right] {$P$};
+\draw[dashed] (0,0)--(.5,.288675);
+\end{tikzpicture}
+\par\small
+The reconstructed first Brillouin zone places $Q$ at an edge midpoint and $P$ at a corner, using the question's coordinates.
+\end{minipage}
+\end{center}
+
+\subsection*{(b) Choosing $\Gamma$: direct evaluation of the local DOS}
+Choose a disk $q<\Lambda\ll a^{-1}$ and let $E_{\min}=\epsilon_p-3\gamma$. The number of states per unit sample area per $k$-space area is $(2\pi)^{-2}$. In the quadratic approximation,
+\begin{align*}
+g_{\Gamma,-}(E)
+&=\frac1{(2\pi)^2}\int_{q<\Lambda}\dd^2q\,
+\delta(E-E_{\min}-\alpha q^2)\\
+&=\frac1{2\pi}\int_0^\Lambda q\,\dd q\,
+\delta(E-E_{\min}-\alpha q^2)\\
+&=\boxed{\frac1{\pi\gamma a^2}
+\Theta(E-E_{\min})\Theta(E_{\min}+\alpha\Lambda^2-E).}
+\end{align*}
+This is the step onset of a two-dimensional quadratic minimum. For the upper band,
+\[
+g_{\Gamma,+}(E)=\frac1{\pi\gamma a^2}
+\Theta(E_{\max}-E)\Theta(E-E_{\max}+\alpha\Lambda^2),
+\quad E_{\max}=\epsilon_p+3\gamma.
+\]
+These are approximate contributions from the chosen patch, not the complete band DOS. Multiply by $A_c=\sqrt3a^2/2$ for DOS per primitive cell, by 2 for both spins, or by sample area $A$ for total DOS. Integrating either expression over energy gives $\Lambda^2/(4\pi)$, the number of states in the chosen disk per unit sample area.
+
+For comparison, one $Q$ saddle produces a logarithmic singularity. One $P$ valley, with its upper and lower conical branches, gives
+\[
+g_P(E)=\frac{|E-\epsilon_p|}{2\pi c^2}
+=\frac{2|E-\epsilon_p|}{3\pi\gamma^2a^2}.
+\]
+Spin and the second inequivalent valley have not been included. The DOS vanishes at the Dirac point; it is not the constant DOS of a two-dimensional parabolic band edge.
+
+\section*{4. Bloch's theorem}
+For a one-electron Hamiltonian with $V(\mathbf r+\mathbf R)=V(\mathbf r)$, energy eigenstates can be chosen as
+\[
+\boxed{\psi_{n\mathbf k}(\mathbf r)=\ee^{\ii\mathbf k\cdot\mathbf r}
+u_{n\mathbf k}(\mathbf r),\qquad
+u_{n\mathbf k}(\mathbf r+\mathbf R)=u_{n\mathbf k}(\mathbf r).}
+\]
+Equivalently, $\psi_{n\mathbf k}(\mathbf r+\mathbf R)=
+\ee^{\ii\mathbf k\cdot\mathbf R}\psi_{n\mathbf k}(\mathbf r)$.
+The Hamiltonian commutes with all lattice translations, which also commute with one another. Simultaneous eigenstates may be chosen; the translation-group multiplication law fixes their translation eigenvalues to the displayed phase form. Here $n$ is a band index, and $\mathbf k,\mathbf k+\mathbf G$ are equivalent quasimomentum labels. The Bloch wave itself need not be periodic; its probability density and its periodic factor $u_{n\mathbf k}$ are periodic.
+
+\section*{5. Why exchange lowers the interaction energy}
+Let $x=(\mathbf r,\sigma)$ include spin and let $w(\mathbf r-\mathbf r')=e^2/(4\pi\varepsilon_0|\mathbf r-\mathbf r'|)$. For a fixed orthonormal set of spin-orbitals,
+\begin{align*}
+J_{ij}&=\int\dd x\,\dd x'\,|\chi_i(x)|^2w(\mathbf r-\mathbf r')|\chi_j(x')|^2,\\
+K_{ij}&=\int\dd x\,\dd x'\,\chi_i^*(x)\chi_j(x)
+w(\mathbf r-\mathbf r')\chi_j^*(x')\chi_i(x').
+\end{align*}
+A Hartree product lacks exchange cross terms. Antisymmetrizing into a Slater determinant gives
+\[
+E^{\rm HF}_{ee}=\frac12\sum_{ij}(J_{ij}-K_{ij}).
+\]
+Since $J_{ii}=K_{ii}$, self-interaction cancels. Relative to the same-orbital Hartree-product interaction energy $E^{\rm H}_{ee}=\tfrac12\sum_{i\ne j}J_{ij}$,
+\[
+E^{\rm HF}_{ee}-E^{\rm H}_{ee}=-\frac12\sum_{i\ne j}K_{ij}\leq0.
+\]
+The Coulomb kernel is positive definite, so $K_{ij}\geq0$; exchange between opposite-spin functions vanishes. If the reference is instead the full-density classical Hartree energy $\tfrac12\sum_{ij}J_{ij}$, the usual exchange functional is $E_x=-\tfrac12\sum_{ij}K_{ij}$, including the diagonal self-interaction correction.
+
+Antisymmetry reduces the likelihood of same-spin electrons being close. This exchange hole reduces repulsion; no extra attractive force is introduced. The comparison fixes the orbitals and the Hartree reference. It does not prove universal strict ordering of separately optimized energies in every Hartree and HF variational convention.
+
+\section*{6. The Hohenberg-Kohn functional}
+Write $\hat H_v=\hat T+\hat W_{ee}+\sum_i v(\mathbf r_i)$. Under the usual nondegenerate-ground-state assumptions, the ground-state density determines the external potential up to a constant, and hence ground-state properties. A constrained-search expression for the universal functional is
+\[
+\boxed{F[n]=\min_{\Psi\to n}\langle\Psi|\hat T+\hat W_{ee}|\Psi\rangle.}
+\]
+The search is over normalized antisymmetric $N$-electron wavefunctions with density $n$. It contains kinetic and electron-electron energies but no explicit external potential. The latter enters separately:
+\[
+E_v[n]=F[n]+\int v(\mathbf r)n(\mathbf r)\,\dd^3r,\qquad
+E_0=\min_{\substack{n\ {\rm admissible}\\ \int n=N}}E_v[n].
+\]
+The minimum occurs at the physical ground-state density. Where the functional derivative exists, the Euler equation is
+$\delta F/\delta n(\mathbf r)+v(\mathbf r)=\mu$,
+with $\mu$ enforcing electron number.
+Universality does not imply that different potentials have the same minimizing density: changing $\int vn$ changes the minimum. Existence of the exact functional does not provide a practical explicit formula for it.
+
+\section*{7. The local density approximation}
+The Kohn-Sham decomposition is
+\[
+F[n]=T_s[n]+E_H[n]+E_{xc}[n],\qquad
+E_H[n]=\frac12\int\dd^3r\dd^3r'\,n(\mathbf r)w(\mathbf r-\mathbf r')n(\mathbf r').
+\]
+$T_s$ is the kinetic energy of the auxiliary noninteracting system with the same density. $E_{xc}$ includes the interaction correction beyond classical Hartree energy and the difference between interacting kinetic energy and $T_s$. LDA uses the uniform-gas exchange-correlation energy \emph{per electron} at the local density:
+\[
+\boxed{E_{xc}^{\rm LDA}[n]=\int n(\mathbf r)
+\varepsilon_{xc}^{\rm unif}(n(\mathbf r))\,\dd^3r.}
+\]
+The factor $n$ is required because $\varepsilon_{xc}^{\rm unif}$ is per electron. Its derivative gives
+\[
+v_{xc}^{\rm LDA}(\mathbf r)=
+\left[\varepsilon_{xc}^{\rm unif}(n)+n\frac{\dd\varepsilon_{xc}^{\rm unif}}{\dd n}\right]_{n=n(\mathbf r)}.
+\]
+LDA treats an inhomogeneous system as locally uniform. It is motivated for slowly varying densities, omits explicit gradients and general nonlocal information, and is not exact for arbitrary systems. Dependence on $n_\uparrow,n_\downarrow$ gives the local spin-density approximation.
+
+\section*{8. Hartree, Hartree-Fock, and Kohn-Sham equations}
+The common one-body operator is
+\[
+\hat h_0=-\frac{\hbar^2}{2m}\nabla^2+v_{\rm ext}(\mathbf r).
+\]
+The terms are electron kinetic energy and the external potential from fixed nuclei and other external sources. Periodic calculations use Bloch orbitals and sums over occupied $\mathbf k$ points.
+
+\subsection*{Hartree: the product-state mean field}
+\[
+\boxed{\left[\hat h_0+\sum_{j\ne i}J_j(\mathbf r)\right]\chi_i(x)
+=\varepsilon_i\chi_i(x),\quad
+J_j(\mathbf r)=\int\dd x'\,w(\mathbf r-\mathbf r')|\chi_j(x')|^2.}
+\]
+Each electron experiences the other electrons' average Coulomb potential. The restriction $j\ne i$ excludes its own orbital's self-interaction. The approximation omits exchange from antisymmetry and genuine many-electron correlation.
+
+\subsection*{Hartree-Fock: a single Slater determinant}
+\[
+\boxed{\left[\hat h_0+\sum_j(\hat J_j-\hat K_j)\right]\chi_i
+=\varepsilon_i\chi_i,}
+\]
+where $\hat J_j\chi_i=J_j(\mathbf r)\chi_i(x)$ and
+\[
+(\hat K_j\chi_i)(x)=\chi_j(x)\int\dd x'\,
+w(\mathbf r-\mathbf r')\chi_j^*(x')\chi_i(x').
+\]
+The exchange operator is nonlocal: its value at $x$ depends on orbital values elsewhere. For $j=i$, exchange cancels the direct term. HF optimizes single determinants, not the full interacting many-electron Hilbert space.
+
+\subsection*{Kohn-Sham: an auxiliary system reproducing the density}
+\[
+\boxed{\left[-\frac{\hbar^2}{2m}\nabla^2+v_{\rm ext}(\mathbf r)
++v_H(\mathbf r)+v_{xc}(\mathbf r)\right]\phi_i
+=\epsilon_i\phi_i,}
+\]
+\[
+v_H(\mathbf r)=\int\dd^3r'\,w(\mathbf r-\mathbf r')n(\mathbf r'),\quad
+v_{xc}(\mathbf r)=\frac{\delta E_{xc}}{\delta n(\mathbf r)},\quad
+n(\mathbf r)=\sum_i f_i|\phi_i(\mathbf r)|^2.
+\]
+Use spin-orbitals with $f_i\leq1$, or unpolarized spatial orbitals with $f_i\leq2$, without counting spin twice. The orbital kinetic energy $T_s$ generally differs from the interacting kinetic energy; the difference is included in $E_{xc}$.
+The electronic total energy is
+\begin{align*}
+E&=T_s+\int v_{\rm ext}n\,\dd^3r+E_H+E_{xc}\\
+ &=\sum_i f_i\epsilon_i-E_H+E_{xc}-\int n v_{xc}\,\dd^3r.
+\end{align*}
+Summing orbital eigenvalues alone double-counts mean-field contributions. Add fixed nuclear repulsion $E_{NN}$ if the total electron-plus-nuclei energy is required.
+
+\subsection*{Self-consistent solution}
+All three problems are nonlinear because their effective operators depend on the unknown orbitals or density. Choose a basis or grid and boundary conditions; guess orbitals or a density; build the direct, exchange, or exchange-correlation terms; solve the eigenvalue problem; occupy states for the required electron number; compute and usually mix the new density; rebuild and repeat. Check density, total-energy, and equation-residual convergence, followed by basis, grid, and $\mathbf k$-mesh convergence. Different initial densities or spin states can reach different stationary solutions. SCF convergence alone does not establish a global minimum.
+
+\section*{Primary references and verification scope}
+The graphite model is discussed in
+\href{https://doi.org/10.1103/PhysRev.71.622}{P. R. Wallace, The Band Theory of Graphite (1947)}.
+The expansions, lattice-plane calculations, and DOS normalization above follow directly from the question data.
+Density-functional foundations are given in
+\href{https://doi.org/10.1103/PhysRev.136.B864}{Hohenberg and Kohn, Inhomogeneous Electron Gas (1964)}
+and
+\href{https://doi.org/10.1103/PhysRev.140.A1133}{Kohn and Sham, Self-Consistent Equations Including Exchange and Correlation Effects (1965)}.

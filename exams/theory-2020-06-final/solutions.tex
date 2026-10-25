@@ -1,0 +1,255 @@
+\chapter{Solid State Theory: Final, June 24, 2020}
+\label{s:theory-2020-06-final}
+\begin{sourceNote}
+All twelve visible questions are addressed. The supplied page has a total weight of 85\%. The derivations below distinguish an exchange operator from an exchange-correlation energy functional, and count bands per primitive cell rather than per conventional cubic cell.
+\end{sourceNote}
+
+\section*{1. Hartree and Hartree--Fock}
+Write $x=(\vct r,\sigma)$ for position and spin. A Hartree trial state is a product,
+\[
+\Psi_{\mathrm H}(x_1,\ldots,x_N)=\prod_{i=1}^N\psi_i(x_i).
+\]
+It describes each electron moving in an average electrostatic field. The product itself is not antisymmetric under exchange of two electrons and does not generate the Fock exchange term. Hartree--Fock (HF) instead uses a Slater determinant of orthonormal spin orbitals,
+\[
+\Psi_{\mathrm{HF}}=\frac{1}{\sqrt{N!}}\det[\psi_i(x_j)].
+\]
+The determinant changes sign upon exchange and therefore implements the Pauli principle. Let $\hat h=-\hbar^2\nabla^2/(2m)+v_{\mathrm{ext}}$ and define
+\begin{align*}
+J_{ij}&=\iint |\psi_i(x)|^2\frac{e^2}{|\vct r-\vct r'|}|\psi_j(x')|^2\dd x\dd x',\\
+K_{ij}&=\iint\psi_i^*(x)\psi_j(x)\frac{e^2}{|\vct r-\vct r'|}\psi_j^*(x')\psi_i(x')\dd x\dd x'.
+\end{align*}
+Then
+\[
+E_{\mathrm{HF}}=\sum_i\bra{\psi_i}\hat h\ket{\psi_i}
+ +\frac12\sum_{ij}(J_{ij}-K_{ij}).
+\]
+For pure spin states, exchange acts only between equal spins. The terms with $i=j$ cancel because $J_{ii}=K_{ii}$; an electron does not interact with itself in HF. The Hartree product energy contains the direct interactions with $j\ne i$ but no exchange. A common density-only Hartree approximation includes self-interaction unless it is separately removed.
+
+HF treats exchange exactly within a single determinant. It still misses correlation beyond that determinant. Its exchange operator is generally nonlocal; it must not be identified with the local Kohn--Sham exchange-correlation potential.
+
+\section*{2. Fully spin-polarized homogeneous gas}
+Hold $N$ and $V$ fixed. In the normal, unpolarized state, two spin species occupy equal Fermi spheres, so
+\[
+n=\frac{2}{(2\pi)^3}\frac{4\pi k_F^3}{3}
+ =\frac{k_F^3}{3\pi^2}.
+\]
+In the fully polarized state only one spin species is occupied:
+\[
+n=\frac{(k_F^{\mathrm{FP}})^3}{6\pi^2},\qquad
+k_F^{\mathrm{FP}}=2^{1/3}k_F.
+\]
+The kinetic energy per electron of a filled three-dimensional sphere is $3\hbar^2k_F^2/(10m)$. The exchange energy per electron of one occupied spin species is $-3e^2k_F/(4\pi)$. The latter has the same form in the normal state because each spin species exchanges only with itself. Therefore
+\[
+\boxed{E_0^{(\mathrm{FP})}=N\left[
+2^{2/3}\frac35\frac{\hbar^2k_F^2}{2m}
+-2^{1/3}\frac{3e^2k_F}{4\pi}\right].}
+\]
+The $k_F$ in this box is the \emph{normal-state} Fermi wavevector in the question. Reusing it as the polarized wavevector without the factor $2^{1/3}$ would violate particle-number conservation.
+
+As a check, define the polarization $\zeta=(N_\uparrow-N_\downarrow)/N$. Since $k_{F\sigma}=k_F(1\pm\zeta)^{1/3}$,
+\begin{align*}
+\frac{T(\zeta)}N&=\frac35E_F
+\frac{(1+\zeta)^{5/3}+(1-\zeta)^{5/3}}2,\\
+\frac{E_x(\zeta)}N&=-\frac{3e^2k_F}{4\pi}
+\frac{(1+\zeta)^{4/3}+(1-\zeta)^{4/3}}2.
+\end{align*}
+Setting $\zeta=0$ and $1$ recovers both states. Polarization raises kinetic energy and makes exchange more negative. It does not automatically lower their sum; the competition depends on density.
+
+\section*{3. Equations and self-consistent solution}
+For individually normalized Hartree orbitals, variation of the product-state energy gives
+\[
+\left[\hat h+\sum_{j\ne i}J_j(\vct r)\right]\psi_i(x)=\epsilon_i\psi_i(x),\qquad
+J_j(\vct r)=\int\frac{e^2|\psi_j(x')|^2}{|\vct r-\vct r'|}\dd x'.
+\]
+Here $\hat h$ contains the kinetic energy and the fixed external potential, while $J_j$ is the electrostatic repulsion from orbital $j$. The explicitly excluded $i$ term avoids self-interaction in this product-state variational equation.
+
+For HF, impose $\braket{\psi_i}{\psi_j}=\delta_{ij}$ using a Hermitian matrix of Lagrange multipliers. Variation of
+\[
+E_{\mathrm{HF}}-\sum_{ij}\lambda_{ij}
+(\braket{\psi_i}{\psi_j}-\delta_{ij})
+\]
+with respect to $\psi_i^*$ yields a coupled orbital equation. A unitary rotation among occupied orbitals diagonalizes $\lambda$, giving the canonical form
+\[
+\boxed{\left[\hat h+\sum_j(\hat J_j-\hat K_j)\right]\psi_i
+=\epsilon_i\psi_i.}
+\]
+The exchange operator acts as
+\[
+(\hat K_j\psi_i)(x)=\psi_j(x)\int
+\frac{e^2\psi_j^*(x')\psi_i(x')}{|\vct r-\vct r'|}\dd x'.
+\]
+It depends on $\psi_i$ at other positions and is not multiplication by a universal local scalar. Including all $j$ is safe because the direct and exchange self-terms cancel.
+
+Both problems are nonlinear: their operators depend on the unknown occupied states. A self-consistent-field iteration is:
+\begin{enumerate}
+\item Choose trial orbitals or a trial density matrix and the desired occupations.
+\item Construct the direct field and, for HF, the exchange operator.
+\item Solve the resulting one-electron eigenproblem and occupy the required states.
+\item Mix old and new density matrices or orbitals if needed; repeat until the energy and density or commutator residual converge.
+\item Check the particle number, orbital normalization, and possible competing spin or symmetry solutions. A converged stationary solution need not be the lowest-energy one.
+\end{enumerate}
+\begin{center}
+\begin{tikzpicture}[>=Latex,every node/.style={draw,rounded corners,align=center,text width=3.5cm,minimum height=0.9cm}]
+\node (guess) at (0,0) {Trial occupied states};
+\node (field) at (4.8,0) {Construct Hartree or Fock operator};
+\node (solve) at (4.8,-1.8) {Solve and occupy eigenstates};
+\node (check) at (0,-1.8) {Mix and check convergence};
+\draw[->] (guess)--(field);\draw[->] (field)--(solve);
+\draw[->] (solve)--(check);\draw[->] (check)--(guess);
+\end{tikzpicture}
+\end{center}
+
+\section*{4. What DFT adds}
+Ground-state density functional theory (DFT) makes the three-dimensional density the basic variable. Its exact universal functional contains both exchange and correlation, whereas ordinary HF restricts the state to a single determinant and omits the remaining correlation energy. Practical Kohn--Sham DFT introduces auxiliary orbitals to evaluate the noninteracting kinetic energy. With a local or semilocal exchange-correlation approximation, it avoids the full nonlocal Fock exchange operation and is often less expensive.
+
+These are formal and computational advantages, not a guarantee that every approximate density functional is more accurate than HF. The exact functional is not generally available; approximate functionals can have self-interaction, band-gap, dispersion, or strong-correlation errors. Kohn--Sham DFT still solves for occupied orbitals and is not simply one scalar differential equation for the density.
+
+\section*{5. Hohenberg--Kohn energy functional}
+For fixed interaction and particle number, a precise universal functional can be written using a constrained search:
+\[
+F[n]=\min_{\Psi\to n}\bra{\Psi}\hat T+\hat W\ket{\Psi}.
+\]
+The minimization is over admissible antisymmetric many-electron states with density $n$. With an external potential $v_{\mathrm{ext}}$, the energy functional is
+\[
+\boxed{E_v[n]=F[n]+\int v_{\mathrm{ext}}(\vct r)n(\vct r)\dd^3r.}
+\]
+A fixed ion--ion energy may be added as a constant. The universal $F[n]$ does not explicitly depend on $v_{\mathrm{ext}}$; the full $E_v[n]$ does. Among admissible densities with $\int n=N$, the ground-state density minimizes $E_v[n]$ and gives the ground-state energy. Different external potentials normally produce different minimizing densities.
+
+In the original nondegenerate Hohenberg--Kohn setting, the ground-state density determines the external potential up to an additive constant. The constrained-search formulation expresses the energy minimization without needing to assign every trial density to a unique nondegenerate external-potential ground state.
+
+\section*{6. Kohn--Sham equations}
+Decompose the universal functional as
+\[
+F[n]=T_s[n]+E_{\mathrm H}[n]+E_{\mathrm{xc}}[n],\qquad
+E_{\mathrm H}[n]=\frac12\iint\frac{e^2n(\vct r)n(\vct r')}{|\vct r-\vct r'|}\dd^3r\dd^3r'.
+\]
+Here $T_s$ is the kinetic energy of an auxiliary noninteracting system with density $n$. The definition
+\[
+E_{\mathrm{xc}}[n]=F[n]-T_s[n]-E_{\mathrm H}[n]
+\]
+includes exchange, the interaction correlation beyond the Hartree term, and the difference between interacting and noninteracting kinetic energies.
+
+For a spin-independent potential, the equations are
+\begin{align*}
+\left[-\frac{\hbar^2\nabla^2}{2m}+v_{\mathrm{ext}}(\vct r)
++v_{\mathrm H}(\vct r)+v_{\mathrm{xc}}(\vct r)\right]\phi_i(\vct r)
+&=\epsilon_i\phi_i(\vct r),\\
+n(\vct r)&=\sum_i f_i|\phi_i(\vct r)|^2,\\
+v_{\mathrm H}(\vct r)&=\int\frac{e^2n(\vct r')}{|\vct r-\vct r'|}\dd^3r',\qquad
+v_{\mathrm{xc}}(\vct r)=\frac{\delta E_{\mathrm{xc}}}{\delta n(\vct r)}.
+\end{align*}
+The occupations satisfy $\sum_i f_i=N$. They are at most two for spatial orbitals in a spin-degenerate treatment, or at most one for explicitly labelled spin orbitals. Spin-polarized calculations use $E_{\mathrm{xc}}[n_\uparrow,n_\downarrow]$ and a potential for each spin. Self-consistency is required because the potential is a functional of the density obtained from the orbitals.
+
+\section*{7. Deriving Kohn--Sham from the energy functional}
+Represent the density by orthonormal auxiliary orbitals and write
+\[
+T_s=-\sum_i f_i\int\phi_i^*\frac{\hbar^2\nabla^2}{2m}\phi_i\dd^3r.
+\]
+Vary $E_v[n]$ with respect to $\phi_i^*$ while constraining orbital orthonormality. Since $\delta n=f_i\phi_i\delta\phi_i^*$ for this variation,
+\begin{align*}
+\frac{\delta T_s}{\delta\phi_i^*}&=-f_i\frac{\hbar^2\nabla^2}{2m}\phi_i,\\
+\frac{\delta(E_{\mathrm H}+E_{\mathrm{xc}}+\int vn)}{\delta\phi_i^*}
+&=f_i(v_{\mathrm H}+v_{\mathrm{xc}}+v)\phi_i.
+\end{align*}
+The Euler--Lagrange equations are consequently the Kohn--Sham equations of Question 6, after diagonalizing the constraint matrix within equal-occupation subspaces. They are a way to minimize the density functional while treating $T_s$ through orbitals; the orbitals are not generally the exact interacting many-electron wavefunction.
+
+An independent consistency check is the total-energy expression. Summing occupied Kohn--Sham eigenvalues counts the Hartree term twice and includes $\int nv_{\mathrm{xc}}$, rather than $E_{\mathrm{xc}}$. Thus
+\[
+\boxed{E=\sum_i f_i\epsilon_i-E_{\mathrm H}
+-\int n v_{\mathrm{xc}}\dd^3r+E_{\mathrm{xc}}+E_{\mathrm{ion-ion}}.}
+\]
+The sum of eigenvalues alone is not the total energy.
+
+\section*{8. Functional derivative in the LDA}
+Because $\varepsilon_{\mathrm{xc}}(n)$ is an energy \emph{per electron}, the LDA functional is
+\[
+E_{\mathrm{xc}}^{\mathrm{LDA}}[n]=\int n(\vct r)\varepsilon_{\mathrm{xc}}(n(\vct r))\dd^3r.
+\]
+Under an arbitrary small density change,
+\[
+\delta E_{\mathrm{xc}}^{\mathrm{LDA}}
+=\int\left[\varepsilon_{\mathrm{xc}}(n)+n\frac{\dd\varepsilon_{\mathrm{xc}}}{\dd n}\right]\delta n\dd^3r.
+\]
+Reading off the coefficient of $\delta n$ gives
+\[
+\boxed{v_{\mathrm{xc}}^{\mathrm{LDA}}(\vct r)
+=\left.\left[\varepsilon_{\mathrm{xc}}(n)+n\varepsilon_{\mathrm{xc}}'(n)\right]\right|_{n=n(\vct r)}.}
+\]
+It is not merely $\varepsilon_{\mathrm{xc}}$, nor merely its derivative. For example, if $\varepsilon_x=-C n^{1/3}$, then $v_x=-(4C/3)n^{1/3}$. Consequently $\int n v_x=(4/3)E_x$, illustrating why the reference shortcut $E_{\mathrm{xc}}=\int n v_{\mathrm{xc}}$ is generally false.
+
+\section*{9. Tight-binding Bloch sums}
+Let $\vct R$ run over $N_c$ Bravais lattice sites, $\vct\tau_\alpha$ identify an atom in the primitive-cell basis, and $\varphi_{\alpha\mu}$ be a localized orbital. One convenient phase convention is
+\[
+\chi_{\alpha\mu,\vct k}(\vct r)=\frac1{\sqrt{N_c}}
+\sum_{\vct R}\ee^{\ii\vct k\cdot(\vct R+\vct\tau_\alpha)}
+\varphi_{\alpha\mu}(\vct r-\vct R-\vct\tau_\alpha).
+\]
+Translate by a Bravais vector $\vct T$ and substitute $\vct R'=\vct R-\vct T$. Then
+\[
+\chi_{\alpha\mu,\vct k}(\vct r+\vct T)
+=\ee^{\ii\vct k\cdot\vct T}\chi_{\alpha\mu,\vct k}(\vct r),
+\]
+so each sum has the Bloch transformation law. An eigenstate is a linear combination of these sums at fixed $\vct k$:
+\[
+\psi_{n\vct k}=\sum_{\alpha\mu}c_{\alpha\mu,n}(\vct k)\chi_{\alpha\mu,\vct k}.
+\]
+Projection gives $H(\vct k)c_n=E_n(\vct k)S(\vct k)c_n$. Here $S$ is the orbital-overlap matrix. The displayed $1/\sqrt{N_c}$ yields individually normalized Bloch sums only when the localized basis is orthonormal, or its overlap is neglected; otherwise $S$ or explicit normalization must be retained. The hopping matrix elements, not dimensionless overlaps alone, determine the energy dispersion.
+
+\section*{10. Silicon orbitals and band counting}
+\textbf{(a) Five orbitals per atom.} Silicon has four chemically active valence orbitals, $3s$ and the three $3p$ orbitals. A common five-orbital empirical choice is
+\[
+\boxed{\{s,p_x,p_y,p_z,s^*\}.}
+\]
+The extra excited $s$-like orbital improves the description of the low conduction bands. It is an effective basis state, not a fifth occupied valence orbital in the isolated ground-state atom. Core $1s$, $2s$, and $2p$ states are normally excluded from this valence-band model.
+
+\textbf{(b) Number of bands.} Diamond-structure silicon has two atoms per primitive cell. Five spatial orbitals on each atom produce a $10\times10$ Bloch Hamiltonian, hence $\boxed{10\text{ spatial bands}}$. With spin degeneracy, each band accommodates two electrons per primitive cell. Counting spin-resolved branches instead gives 20 coincident branches when spin splitting is absent. Using the eight atoms of the conventional cubic cell would fold the bands and change the bookkeeping, not create new physical states.
+
+\textbf{(c) Filled bands.} There are $2\times4=8$ valence electrons per primitive cell. In the insulating ground state, each full spin-degenerate band holds two, so
+\[
+\boxed{N_{\mathrm{filled}}=\frac82=4.}
+\]
+The remaining six spatial bands in the model are unoccupied. Counting only one atom would incorrectly give two occupied bands.
+
+\section*{11. Why bare plane waves converge slowly near cores}
+A plane wave is smooth, but an all-electron valence state has rapid variations near nuclei and must be orthogonal to compact core states. Resolving these short length scales requires large reciprocal vectors $\vct G$ and a high kinetic-energy cutoff,
+\[
+\frac{\hbar^2|\vct k+\vct G|^2}{2m}\le E_{\mathrm{cut}}.
+\]
+In three dimensions the number of waves grows approximately as $E_{\mathrm{cut}}^{3/2}$. A finite plane-wave variational calculation that does not constrain the valence subspace can also approach lower core states. This is a failure to isolate the intended valence problem, not an unbounded-below nonrelativistic Hamiltonian.
+
+Three related remedies are useful:
+\begin{enumerate}
+\item \textbf{Orthogonalized plane waves (OPW).} Project every plane wave out of the occupied core space: $(1-P_c)\ket{\vct k+\vct G}$. Core orthogonality is then built into the basis.
+\item \textbf{Pseudopotentials.} Replace the strong core potential and nodal all-electron valence function by an effective potential and a smooth pseudo-wavefunction that reproduce the relevant valence scattering and external behavior. Fewer plane waves are needed.
+\item \textbf{Augmentation methods.} Use an appropriate near-nucleus representation together with a smooth interstitial representation, as in augmented-wave approaches.
+\end{enumerate}
+If $\ket{\psi}=(1-P_c)\ket{\phi}$ and $H\ket{\chi_c}=\epsilon_c\ket{\chi_c}$, the OPW construction implies
+\[
+\left[H+\sum_c(E-\epsilon_c)\ket{\chi_c}\bra{\chi_c}\right]\ket{\phi}=E\ket{\phi}.
+\]
+For a valence state above the core energies, the additional projector term is repulsive. This is the Phillips--Kleinman connection between core orthogonality and an effective pseudopotential.
+
+\section*{12. Core Bloch sums for LiH}
+In the usual rocksalt description, a primitive cell contains one Li and one H. The standard valence partition freezes the tightly bound Li $1s^2$ shell as core; Li $2s$ and H $1s$ contribute to the valence sector. Although the occupied valence states have substantial H character, H $1s$ is not an additional frozen core in this partition.
+
+For Li sites $\vct R+\vct\tau_{\mathrm{Li}}$, the spatial core Bloch sum is
+\[
+\boxed{\chi_{c\vct k}(\vct r)=\mathcal N_{\vct k}\sum_{\vct R}
+\ee^{\ii\vct k\cdot(\vct R+\vct\tau_{\mathrm{Li}})}
+\varphi_{\mathrm{Li},1s}(\vct r-\vct R-\vct\tau_{\mathrm{Li}}).}
+\]
+There is one such spatial core band, doubly occupied when spin is included. If intersite core overlap is negligible, $\mathcal N_{\vct k}=1/\sqrt{N_c}$; otherwise normalize the sum or orthonormalize the core subspace. For each spin, the OPW is
+\[
+\ket{w_{\vct k+\vct G}}=\ket{\vct k+\vct G}
+-\ket{\chi_{c\vct k}}\braket{\chi_{c\vct k}}{\vct k+\vct G}.
+\]
+Only a core Bloch sum at the same crystal momentum enters because different Bloch sectors are orthogonal. A different chosen frozen-core partition must be specified explicitly before changing the projector.
+
+\section*{Primary references and checks}
+The algebra is derived above. The following original papers establish the functional and basis constructions used for comparison:
+\begin{itemize}
+\item P. Hohenberg and W. Kohn, \href{https://doi.org/10.1103/PhysRev.136.B864}{\textit{Inhomogeneous Electron Gas} (1964)}.
+\item W. Kohn and L. J. Sham, \href{https://doi.org/10.1103/PhysRev.140.A1133}{\textit{Self-Consistent Equations Including Exchange and Correlation Effects} (1965)}.
+\item J. C. Phillips and L. Kleinman, \href{https://doi.org/10.1103/PhysRev.116.287}{\textit{New Method for Calculating Wave Functions in Crystals and Molecules} (1959)}.
+\item P. Vogl, H. P. Hjalmarson, and J. D. Dow, \href{https://doi.org/10.1016/0022-3697(83)90064-1}{\textit{A Semi-empirical Tight-binding Theory of the Electronic Structure of Semiconductors} (1983)}.
+\end{itemize}

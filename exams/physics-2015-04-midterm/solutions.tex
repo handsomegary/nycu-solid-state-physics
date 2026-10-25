@@ -1,0 +1,254 @@
+\chapter{Solutions: Midterm Exam, April 30, 2015}
+\label{s:physics-2015-04-midterm}
+These solutions are derived from the stated assumptions. The density of states $D(E)$ counts states per unit energy in the entire volume $V$. The factor $g_s$ denotes any spin degeneracy included separately; the free-electron gas uses $g_s=2$ without double counting.
+
+\section*{1. Lattice translations in BaTiO$_3$}
+For the cubic model specified in the question, the Bravais translations are
+$\vct R=a(n_x,n_y,n_z)$ with $n_i\in\mathbb Z$. A five-atom basis is
+\[
+\begin{array}{c|c}
+\text{Atom}&\vct\tau/a\\ \hline
+\mathrm{Ba}&(0,0,0)\\
+\mathrm{Ti}&(1/2,1/2,1/2)\\
+\mathrm{O}_1&(1/2,1/2,0)\\
+\mathrm{O}_2&(1/2,0,1/2)\\
+\mathrm{O}_3&(0,1/2,1/2)
+\end{array}
+\]
+Actual atomic positions are $\vct R+\vct\tau_\nu$. A displacement is a Bravais translation precisely when it belongs to $a\mathbb Z^3$.
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{True.} There is one Ti basis position in each primitive cell, so subtraction cancels the basis position:
+\[
+(\vct R_m+\vct\tau_{\rm Ti})-(\vct R_n+\vct\tau_{\rm Ti})=\vct R_m-\vct R_n.
+\]
+This is always a lattice translation.
+\item \textbf{True.} A Ba-to-Ti displacement has the form
+$a(n_x+1/2,n_y+1/2,n_z+1/2)$. Its half-integer components exclude it from $a\mathbb Z^3$.
+\item \textbf{False.} Two O atoms with the same basis index are related by a translation, but the assertion concerns any two O atoms. Within one cell,
+\[
+\vct\tau_{\mathrm O_2}-\vct\tau_{\mathrm O_1}=\frac a2(0,-1,1),
+\]
+which is not a simple-cubic lattice translation. Having the same chemical species does not imply having the same basis index.
+\end{enumerate}
+
+\section*{2. The fcc lattice, its reciprocal lattice, and lattice planes}
+\subsection*{(a) Primitive-cell volumes}
+The given vectors are primitive vectors of a face-centered cubic (fcc) lattice. Their scalar triple product is
+\[
+\Omega=\abs{\vct t_1\cdot(\vct t_2\times\vct t_3)}
+=\left(\frac a2\right)^3
+\det\begin{pmatrix}0&1&1\\1&0&1\\1&1&0\end{pmatrix}
+=\frac{a^3}{4}.
+\]
+A Wigner--Seitz cell is also a primitive cell. The reciprocal primitive-cell volume, equal to the first Brillouin-zone volume, is $(2\pi)^3/\Omega$. Thus
+\[
+\boxed{V_{\rm WS}=\frac{a^3}{4}},\qquad
+\boxed{V_{\rm BZ}=\frac{32\pi^3}{a^3}}.
+\]
+
+\subsection*{(b) Reciprocal primitive vectors}
+Using $\vct g_1=2\pi(\vct t_2\times\vct t_3)/\Omega$ and cyclic permutations gives
+\[
+\boxed{\vct g_1=\frac{2\pi}{a}(-1,1,1),\quad
+\vct g_2=\frac{2\pi}{a}(1,-1,1),\quad
+\vct g_3=\frac{2\pi}{a}(1,1,-1)}.
+\]
+For example, $\vct t_1\cdot\vct g_1=2\pi$ and
+$\vct t_1\cdot\vct g_2=\vct t_1\cdot\vct g_3=0$. The other rows give the same reciprocal orthogonality relation.
+
+\subsection*{(c) Spacing of successive occupied lattice planes}
+The unit normal is $\hat{\vct n}=(0,1,1)/\sqrt2$. Project an arbitrary lattice point
+$\vct R=n_1\vct t_1+n_2\vct t_2+n_3\vct t_3$ onto this direction:
+\[
+\hat{\vct n}\cdot\vct R
+=\frac{a}{2\sqrt2}(2n_1+n_2+n_3).
+\]
+The integer in parentheses can take every integer value. Successive planes containing fcc lattice points therefore lie at
+$\hat{\vct n}\cdot\vct R=j a/(2\sqrt2)$, giving
+\[
+\boxed{d=\frac{a}{2\sqrt2}}.
+\]
+Equivalently, the shortest nonzero reciprocal vector parallel to the normal is
+$\vct G=2\vct g_1+\vct g_2+\vct g_3=(4\pi/a)(0,1,1)$, and $d=2\pi/|\vct G|$.
+\begin{sourceNote}
+Here ``successive lattice planes'' means successive occupied fcc layers. The formal conventional-cubic $(011)$ spacing is $a/\sqrt2$, but fcc centering supplies an additional occupied layer halfway between those planes. The occupied-layer spacing requested under this interpretation is consequently half as large.
+\end{sourceNote}
+
+\subsection*{(d) Areal density}
+Two perpendicular in-plane translations are
+\[
+\vct u=a(1,0,0)=-\vct t_1+\vct t_2+\vct t_3,\qquad
+\vct v=\frac a2(0,1,-1)=\vct t_3-\vct t_2.
+\]
+They generate the two-dimensional lattice on this plane. Its primitive area is
+$A_{\parallel}=|\vct u\times\vct v|=a^2/\sqrt2$, with one lattice point per primitive parallelogram. Hence
+\[
+\boxed{\sigma=\frac1{A_{\parallel}}=\frac{\sqrt2}{a^2}}.
+\]
+The volume check is $A_{\parallel}d=\Omega$, equivalently $\sigma=d/\Omega$.
+\begin{center}
+\begin{tikzpicture}[>=Latex]
+\draw[thick] (0,0) rectangle (3,2.12);
+\foreach \x in {0,3}\foreach \y in {0,2.12}\fill (\x,\y) circle (2pt);
+\draw[->,blue!60!black,thick] (0,0)--(3,0) node[midway,below] {$\vct u,\ |\vct u|=a$};
+\draw[->,blue!60!black,thick] (0,0)--(0,2.12) node[midway,left] {$\vct v$};
+\node[right] at (3,1.06) {$|\vct v|=a/\sqrt2$};
+\node at (1.5,1.06) {$A_{\parallel}=a^2/\sqrt2$};
+\node[below] at (1.5,-.5) {Four corners contribute $1/4$ point each.};
+\end{tikzpicture}
+\end{center}
+
+\subsection*{(e) Testing the proposed vectors}
+Every reciprocal vector must satisfy
+$\vct t_i\cdot\vct G\in2\pi\mathbb Z$ for all primitive translations. However,
+\[
+\vct t_1\cdot\vct G_1
+=\frac a2(0,1,1)\cdot\frac\pi a(0,1,1)=\pi.
+\]
+Thus $\vct G_1$ is not even a reciprocal-lattice vector. The proposed vectors \textbf{do not} generate the required reciprocal lattice by integer linear combinations. Linear independence over the real numbers only guarantees that three vectors span three-dimensional vector space; it does not establish equality of discrete lattices.
+
+\section*{3. Atomic density of diamond}
+Diamond consists of an fcc Bravais lattice with a two-atom basis. A conventional cubic cell contains
+$8(1/8)+6(1/2)=4$ fcc lattice points. With two atoms per point,
+\[
+\boxed{n_{\rm atom}=\frac{4\times2}{a^3}=\frac8{a^3}}.
+\]
+The equivalent primitive-cell count is two atoms divided by $a^3/4$.
+
+\section*{4. Definitions}
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Three-dimensional hexagonal lattice.} One choice of primitive vectors is
+\[
+\vct a_1=a(1,0,0),\quad
+\vct a_2=a(-1/2,\sqrt3/2,0),\quad
+\vct a_3=c(0,0,1).
+\]
+The first two vectors have equal lengths and enclose $120^\circ$; the third is perpendicular to their plane. Their integer combinations define the hexagonal Bravais lattice, of primitive volume $\sqrt3a^2c/2$. Hexagonal close packing (hcp) adds a two-atom basis to this lattice; the lattice and its basis are separate concepts.
+\item \textbf{Bloch theorem.} If a single-electron Hamiltonian is invariant under every lattice translation, its energy eigenstates can be chosen as
+\[
+\psi_{n\vct k}(\vct r)=\ee^{\ii\vct k\cdot\vct r}u_{n\vct k}(\vct r),
+\qquad u_{n\vct k}(\vct r+\vct R)=u_{n\vct k}(\vct r).
+\]
+Equivalently,
+$\psi_{n\vct k}(\vct r+\vct R)=\ee^{\ii\vct k\cdot\vct R}\psi_{n\vct k}(\vct r)$.
+The wave vector labels crystal momentum and can be restricted to the first Brillouin zone modulo a reciprocal vector.
+\item \textbf{Critical point.} A point where $\nabla_{\vct k}\varepsilon_n=0$. For a nondegenerate Hessian in three dimensions, the type $M_j$ counts its negative eigenvalues: $M_0$ is a minimum, $M_1$ and $M_2$ are saddles with one and two negative directions, and $M_3$ is a maximum.
+\item \textbf{Fermi energy.} The highest occupied single-particle energy after filling the zero-temperature ground state at fixed particle number. For the free-electron gas here it equals $\mu(0)=\varepsilon_F$. Its energy reference must be specified; it is distinct from the work function required to remove an electron to vacuum.
+\end{enumerate}
+
+\section*{5. Density of states near a three-dimensional $M_1$ saddle}
+\subsection*{(a) Local dispersion}
+Set $\vct q=\vct k-\vct k_1$ and diagonalize the Hessian. The gradient vanishes at the critical point, so no linear term remains. With one negative-curvature direction,
+\[
+\boxed{\varepsilon(\vct k)
+=\varepsilon_1+Aq_x^2+Bq_y^2-Cq_z^2+O(q^3)},
+\qquad A,B,C>0.
+\]
+The coefficients $A,B,C$ already incorporate the factor $1/2$ in the Taylor expansion.
+
+\subsection*{(b) Deriving the nonanalytic contribution with a local cutoff}
+Define $X=\sqrt A q_x$, $Y=\sqrt B q_y$, $Z=\sqrt C q_z$, and $\Delta=E-\varepsilon_1$. Then
+\[
+D_{\rm loc}(E)=\frac{g_sV}{(2\pi)^3\sqrt{ABC}}
+\int\dd X\dd Y\dd Z\,
+\delta(\Delta-X^2-Y^2+Z^2).
+\]
+The quadratic saddle cannot be extended to infinity: its constant-energy surfaces are unbounded. Restrict it to a neighborhood, for example $|Z|<\Lambda$, with a transverse cutoff large enough to contain the relevant energy shells in the range considered. Polar integration over $X,Y$ gives
+\[
+\int_0^{\infty}2\pi\rho\dd\rho\,
+\delta(\Delta+Z^2-\rho^2)=\pi\Theta(\Delta+Z^2).
+\]
+For $\Delta>0$, every $Z$ in $(-\Lambda,\Lambda)$ contributes. For
+$-\Lambda^2<\Delta<0$, the interval $|Z|<\sqrt{-\Delta}$ has no real transverse radius and must be removed. Therefore
+\[
+D_{\rm loc}(E)=\frac{g_sV}{4\pi^2\sqrt{ABC}}
+\left[\Lambda-\sqrt{\varepsilon_1-E}\,
+\Theta(\varepsilon_1-E)\right].
+\]
+Other cutoff choices and other parts of the band change the regular background, while the leading local nonanalytic term is
+\[
+\boxed{D(E)=D_{\rm reg}(E)
+-\frac{g_sV}{4\pi^2\sqrt{ABC}}
+\sqrt{\varepsilon_1-E}\,\Theta(\varepsilon_1-E)}.
+\]
+This expression gives the leading behavior near the critical energy; higher-order terms in the dispersion can add subleading corrections. The density of states remains finite at $E=\varepsilon_1$, but its slope diverges on the lower-energy side. Local curvature alone cannot fix the absolute background $D_{\rm reg}$ of the whole band.
+\begin{center}
+\begin{tikzpicture}[>=Latex]
+\draw[->] (0,0)--(5,0) node[right] {$E$};
+\draw[->] (0,0)--(0,3) node[above] {$D_{\rm loc}$};
+\draw[dashed,gray] (3,0)--(3,2.4);
+\draw[thick,blue!65!black,domain=.35:3,samples=100] plot (\x,{2.4-sqrt(3-\x)});
+\draw[thick,blue!65!black] (3,2.4)--(4.8,2.4);
+\node[below] at (3,0) {$\varepsilon_1$};
+\node[above] at (2.7,2.55) {Finite value; divergent slope from below};
+\end{tikzpicture}
+\end{center}
+
+\section*{6. Free-electron ground-state quantities in terms of $r_s$}
+Let $a_0=4\pi\varepsilon_0\hbar^2/(m_e e^2)$ be the Bohr radius. By definition, a sphere of radius $r_sa_0$ contains the mean volume per electron:
+\[
+\frac1n=\frac{4\pi}{3}(r_sa_0)^3
+\quad\Longrightarrow\quad
+\boxed{n=\frac{3}{4\pi r_s^3a_0^3}}.
+\]
+Counting both spins inside the Fermi sphere gives
+\[
+N=2\frac V{(2\pi)^3}\frac{4\pi}{3}k_F^3,
+\qquad n=\frac{k_F^3}{3\pi^2}.
+\]
+Consequently,
+\begin{align*}
+\boxed{k_F=\frac{(9\pi/4)^{1/3}}{r_sa_0}},\qquad
+\boxed{\varepsilon_F=\frac{\hbar^2}{2m_ea_0^2}
+\left(\frac{9\pi}{4}\right)^{2/3}\frac1{r_s^2}},\\
+\boxed{T_F=\frac{\varepsilon_F}{\kb}}.
+\end{align*}
+The mean energy averages all occupied states, rather than only states on the Fermi surface:
+\[
+\overline\varepsilon
+=\frac{\int_0^{k_F}(\hbar^2k^2/2m_e)k^2\dd k}
+{\int_0^{k_F}k^2\dd k}
+=\boxed{\frac35\varepsilon_F}.
+\]
+
+\section*{7. Low-temperature heat capacity and the printed coefficient}
+For $T\ll T_F$, states well below the Fermi energy are almost completely filled. Pauli exclusion prevents arbitrary changes of their occupations. Thermal excitations predominantly involve an energy window of width of order $\kb T$ near $\varepsilon_F$.
+Since $D(\varepsilon_F)=3N/(2\varepsilon_F)$ in three dimensions, the number of thermally active states scales as
+\[
+N_{\rm active}\sim D(\varepsilon_F)\kb T
+=\frac32N\frac{T}{T_F}.
+\]
+Assigning a heat-capacity scale $\kb$ to each active state gives the estimate printed in the question: a suppression by $T/T_F$ relative to the classical value.
+
+The printed factor $3/2$ is not the exact low-temperature coefficient. The Sommerfeld expansion at fixed $N,V$ gives
+\[
+C_V=\frac{\pi^2}{3}\kb^2T D(\varepsilon_F)
+=\boxed{\frac{\pi^2}{2}N\kb\frac{T}{T_F}}
++O\!\left(N\kb(T/T_F)^3\right).
+\]
+Thus the physical argument establishes linear temperature dependence and a restricted thermally active population. It must not be interpreted as an exact derivation of the numerical coefficient $3/2$.
+
+\section*{8. The exponential tail above the vacuum level}
+The Fermi--Dirac distribution is
+\[
+f(E)=\frac1{\ee^{(E-\mu)/(\kb T)}+1}.
+\]
+Define the work function $\Phi=E_{\rm vac}-\mu>0$. When $\Phi\gg\kb T$, as in the usual low-temperature metallic regime, all $E\ge E_{\rm vac}$ satisfy
+$x=(E-\mu)/(\kb T)\ge\Phi/(\kb T)\gg1$. It follows that
+\[
+f(E)=\frac{\ee^{-x}}{1+\ee^{-x}}
+\simeq\boxed{\exp[-(E-\mu)/(\kb T)]}.
+\]
+The relative error of $f_{\rm exp}=\ee^{-x}$ is exactly
+\[
+\frac{f_{\rm exp}-f}{f}=\ee^{-x}
+\le\ee^{-\Phi/(\kb T)}.
+\]
+The approximation is controlled by the energy separation from the chemical potential compared with thermal energy, not by the word ``vacuum'' alone.
+
+\section*{References and checks}
+The counting arguments and integrals are derived above. Primary teaching references for comparison are
+\href{https://www.damtp.cam.ac.uk/user/tong/statphys/statmechhtml/S3.html}{David Tong, Statistical Physics, Chapter 3}
+(state counting and the Sommerfeld expansion), and
+\href{https://www.mit.edu/course/6/6.732/www/6.732-pt2.pdf}{M. S. Dresselhaus, MIT Solid State Physics Part II, Chapter 4}
+(critical-point classification and the three-dimensional saddle-point singularity).

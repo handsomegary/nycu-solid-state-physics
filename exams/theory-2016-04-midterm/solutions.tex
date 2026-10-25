@@ -1,0 +1,287 @@
+\chapter{Solutions: Midterm, 29 April 2016}
+\label{s:theory-2016-04-midterm}
+\begin{sourceNote}
+All twelve printed questions are available. The solutions below distinguish exact statements from approximations and make the assumptions behind the true/false questions explicit. In Questions 7--10, $\psi$ always denotes the physical crystal state and $\varphi$ its auxiliary pseudo wavefunction; reversing these symbols reverses the projection relation.
+\end{sourceNote}
+
+\section*{1. True or false}
+\subsection*{(a) A self-consistent HF determinant is an exact interacting eigenstate: false}
+Hartree--Fock minimizes the expectation value of the interacting Hamiltonian within the set of single Slater determinants:
+\[
+E_{\rm HF}=\min_{\Phi\ {\rm determinant}}\frac{\bra\Phi H\ket\Phi}{\braket\Phi\Phi}
+\geq E_0.
+\]
+Stationarity within this restricted set does not imply $H\Phi=E\Phi$ in the full many-electron Hilbert space. The two-electron interaction generally couples the HF determinant to doubly excited determinants. Brillouin's theorem removes its direct coupling to singly excited determinants at a stationary HF solution, not to all other states. Exceptional systems may have an exact single-determinant ground state; the assertion for general interacting electrons is false.
+
+\subsection*{(b) Increasing density favors complete spin polarization: false}
+Let $n=N/\Omega$, $\zeta=(n_\uparrow-n_\downarrow)/n$, and $k_F=(3\pi^2n)^{1/3}$ for the unpolarized gas. The noninteracting kinetic energy and HF exchange energy per electron are
+\begin{align*}
+t(n,\zeta)&=\frac{3\hbar^2k_F^2}{10m_e}
+\frac{(1+\zeta)^{5/3}+(1-\zeta)^{5/3}}2,\\
+e_x(n,\zeta)&=-\frac{3\kappa k_F}{4\pi}
+\frac{(1+\zeta)^{4/3}+(1-\zeta)^{4/3}}2,
+\quad \kappa=\frac{e^2}{4\pi\epsilon_0}.
+\end{align*}
+The neutralizing background cancels the uniform direct electrostatic contribution. Comparing $\zeta=1$ with $\zeta=0$,
+\[
+\frac{t(n,1)}{t(n,0)}=2^{2/3}>1,\qquad
+\frac{e_x(n,1)}{e_x(n,0)}=2^{1/3}>1.
+\]
+Polarization lowers the negative exchange energy but raises the kinetic energy because all electrons must fill one spin species to a larger Fermi momentum. The penalty scales as $n^{2/3}$ whereas the exchange gain scales as $n^{1/3}$; thus sufficiently high density favors the unpolarized state. This scaling argument does not determine the exact intermediate-density phase boundary, where correlation matters, nor the eventual low-density Wigner crystal.
+
+\subsection*{(c) Odd electron count excludes every electrical insulator: false as stated}
+For a nonmagnetic independent-electron crystal with two spin states per Bloch band and the specified primitive translation symmetry, one completely filled band contains two electrons per primitive cell. Odd filling therefore forces an incompletely filled band and excludes an ordinary spin-degenerate band insulator.
+
+The question, however, says ``electrical insulator'' without these assumptions. A half-filled one-orbital Hubbard system has one electron per primitive cell and can be a Mott insulator: in the atomic limit $t=0$, moving an electron to a neighboring occupied site creates a doublon and a hole and costs $U>0$. Its charge excitations are gapped despite odd filling. Magnetic ordering or a larger ordered unit cell can also invalidate the simple counting argument. Thus the restricted band-theory statement is true, but the unrestricted printed statement is false.
+
+\section*{2. Fixed-nuclei many-electron Hamiltonian}
+For fixed nuclear positions $\vct R_A$ and charges $Z_Ae$, define
+\[
+v_{\rm ext}(\vct r)=-\sum_A\frac{Z_A\kappa}{|\vct r-\vct R_A|},\qquad
+h(i)=-\frac{\hbar^2}{2m_e}\nabla_i^2+v_{\rm ext}(\vct r_i).
+\]
+The nonrelativistic electronic Hamiltonian is
+\[
+\boxed{H_e=\sum_{i=1}^N h(i)+\sum_{i<j}\frac{\kappa}{|\vct r_i-\vct r_j|}.}
+\]
+These are the electron kinetic energy, electron--nucleus attraction, and electron--electron repulsion. The restriction $i<j$ counts each pair once. If the requested energy includes the nuclear electrostatic energy, add
+\[
+E_{nn}=\sum_{A<B}\frac{Z_AZ_B\kappa}{|\vct R_A-\vct R_B|}.
+\]
+This is constant for the fixed configuration and does not affect the electronic variational equations. Nuclear kinetic energy is absent under the fixed-nuclei assumption.
+
+\section*{3. Hartree and HF trial states}
+Write a space--spin coordinate as $x=(\vct r,\sigma)$, with $\int\dd x$ including the sum over spin. The Hartree state is a product of normalized one-electron functions:
+\[
+\boxed{\Psi_H(x_1,\ldots,x_N)=\prod_{i=1}^N\chi_i(x_i),
+\quad \int|\chi_i(x)|^2\dd x=1.}
+\]
+It treats other electrons through an average field but does not enforce fermionic antisymmetry.
+
+HF replaces this product by a normalized determinant of orthonormal spin orbitals:
+\[
+\boxed{\Phi_{\rm HF}(x_1,\ldots,x_N)=\frac1{\sqrt{N!}}
+\det[\chi_i(x_j)]_{i,j=1}^N,\quad \braket{\chi_i}{\chi_j}=\delta_{ij}.}
+\]
+Interchanging two electronic coordinates exchanges two columns and changes the sign. The orbitals are variational unknowns, not automatically exact eigenfunctions of the isolated one-electron Hamiltonian $h$.
+
+\section*{4. Derivation of the Hartree--Fock equations}
+For the determinant in Question 3, the energy is
+\[
+E_{\rm HF}=\sum_i h_{ii}+\frac12\sum_{ij}(J_{ij}-K_{ij}),
+\]
+where
+\begin{align*}
+h_{ii}&=\int\chi_i^*(x)h\chi_i(x)\dd x,\\
+J_{ij}&=\iint\frac{\kappa|\chi_i(x)|^2|\chi_j(x')|^2}
+{|\vct r-\vct r'|}\dd x\dd x',\\
+K_{ij}&=\iint\frac{\kappa\chi_i^*(x)\chi_j^*(x')\chi_j(x)\chi_i(x')}
+{|\vct r-\vct r'|}\dd x\dd x'.
+\end{align*}
+The direct term $J_{ij}$ comes from the charge densities; $K_{ij}$ is the exchange term arising from antisymmetry. For $i=j$, they cancel exactly.
+
+Minimize with all orthonormality constraints:
+\[
+\mathcal L=E_{\rm HF}-\sum_{ij}\lambda_{ij}
+\bigl(\braket{\chi_i}{\chi_j}-\delta_{ij}\bigr).
+\]
+The variation with respect to $\chi_i^*(x)$ gives
+\[
+F\chi_i=\sum_j\lambda_{ij}\chi_j,\qquad
+F=h+\sum_{j\in\mathrm{occ}}(J_j-K_j),
+\]
+where the operators act on an arbitrary spin orbital $f$ as
+\begin{align*}
+(J_jf)(x)&=\left[\int\frac{\kappa|\chi_j(x')|^2}{|\vct r-\vct r'|}\dd x'\right]f(x),\\
+(K_jf)(x)&=\chi_j(x)\int\frac{\kappa\chi_j^*(x')f(x')}{|\vct r-\vct r'|}\dd x'.
+\end{align*}
+$J_j$ is a local multiplication operator, whereas $K_j$ is nonlocal. The Hermitian multiplier matrix can be diagonalized by a unitary rotation of occupied orbitals, which changes the determinant only by an overall phase. In the resulting canonical orbitals,
+\[
+\boxed{\left[h+\sum_j(J_j-K_j)\right]\chi_i=\epsilon_i\chi_i.}
+\]
+The equations are nonlinear because $F$ depends on its occupied solutions. Guess orbitals, build $F$, solve, update occupations and density, and iterate to self-consistency. Compare distinct converged solutions if seeking the lowest HF energy. The total energy is not simply the orbital-energy sum:
+\[
+E_{\rm HF}=\sum_i\epsilon_i-\frac12\sum_{ij}(J_{ij}-K_{ij}).
+\]
+
+\section*{5. The Hohenberg--Kohn functional}
+For a physically admissible density $n$ with $\int n\dd^3r=N$, a precise constrained-search form of the universal functional is
+\[
+\boxed{F[n]=\min_{\Psi\to n}\bra\Psi T+V_{ee}\ket\Psi,}
+\]
+where the search is over normalized antisymmetric $N$-electron states with density $n$. The ensemble version can be used where required. ``Universal'' means independent of the external scalar potential for the same particle interaction and kinetic operator.
+
+For a specified external potential,
+\[
+\boxed{E_v[n]=F[n]+\int v_{\rm ext}(\vct r)n(\vct r)\dd^3r,\qquad
+E_0=\min_{n,\ \int n=N}E_v[n].}
+\]
+At the exact ground-state density $n_0$, $E_v[n_0]=E_0$. The additive fixed-nuclei constant $E_{nn}$ may be included in total energies without changing the minimizer. The name ``HK functional'' is sometimes applied to $F[n]$ and sometimes to the full $E_v[n]$; specifying both avoids ambiguity. HK theory justifies a density-based variational principle; it does not provide a closed exact formula for $F[n]$.
+
+\section*{6. Kohn--Sham equations from the density functional}
+Introduce the kinetic functional of a noninteracting auxiliary system, $T_s[n]$, and decompose
+\[
+F[n]=T_s[n]+E_H[n]+E_{xc}[n],\qquad
+E_H[n]=\frac\kappa2\iint\frac{n(\vct r)n(\vct r')}{|\vct r-\vct r'|}\dd^3r\dd^3r'.
+\]
+Thus $E_{xc}=F-T_s-E_H$ includes both nonclassical interaction effects and the difference between interacting and noninteracting kinetic energies. With occupied normalized spin orbitals $\varphi_i$ and unit occupations for simplicity,
+\[
+n(\vct r)=\sum_{i\in\mathrm{occ}}\sum_\sigma|\varphi_i(\vct r,\sigma)|^2,
+\qquad T_s=\sum_i\bra{\varphi_i}-\frac{\hbar^2\nabla^2}{2m_e}\ket{\varphi_i}.
+\]
+Vary the energy
+\[
+T_s+E_H+E_{xc}+\int v_{\rm ext}n\dd^3r
+-\sum_{ij}\lambda_{ij}(\braket{\varphi_i}{\varphi_j}-\delta_{ij})
+\]
+with respect to $\varphi_i^*$. Since
+\[
+v_H(\vct r)=\frac{\delta E_H}{\delta n(\vct r)}
+=\int\frac{\kappa n(\vct r')}{|\vct r-\vct r'|}\dd^3r',\qquad
+v_{xc}(\vct r)=\frac{\delta E_{xc}}{\delta n(\vct r)},
+\]
+and $\delta n/\delta\varphi_i^*=\varphi_i$, diagonalizing the multiplier matrix yields
+\[
+\boxed{\left[-\frac{\hbar^2\nabla^2}{2m_e}+v_{\rm ext}(\vct r)
++v_H(\vct r)+v_{xc}(\vct r)\right]\varphi_i=\epsilon_i\varphi_i.}
+\]
+Here the terms are auxiliary kinetic energy, external attraction, classical Hartree repulsion, and exchange--correlation potential. Solve self-consistently because the last two depend on the occupied-orbital density. For a spin-polarized calculation the corresponding spin-density functional gives separate $v_{xc,\sigma}$.
+
+With an exact functional, KS theory can reproduce the exact ground-state density and total energy; the auxiliary determinant is not generally the exact interacting many-body wavefunction, and the orbital eigenvalues are not generally all physical excitation energies. In practice the approximation to $E_{xc}$ is a separate source of error.
+
+\section*{7. Meaning of variational collapse in a valence calculation}
+Suppose a calculation is intended to find a valence eigenstate of an all-electron one-particle Hamiltonian, while lower core states are already occupied and treated separately. Minimizing the Rayleigh quotient over an unconstrained plane-wave expansion permits admixture of these lower states. For normalized orthogonal core and valence eigenstates,
+\[
+\ket{\eta_\theta}=\cos\theta\ket v+\sin\theta\ket c,\quad
+E_c<E_v,
+\]
+\[
+\bra{\eta_\theta}H\ket{\eta_\theta}
+=E_v+(E_c-E_v)\sin^2\theta.
+\]
+The energy decreases by increasing the core component. The variational procedure therefore leaves the intended valence subspace and collapses toward an occupied core solution unless core orthogonality is imposed. Highly localized core structure also requires many high-momentum plane waves, making a naive expansion inefficient.
+
+This does \textbf{not} mean that the ordinary nonrelativistic Coulomb Hamiltonian is unbounded below or that a correct all-electron Rayleigh--Ritz calculation is invalid. If all lower eigenstates are included and the required higher eigenstate is properly targeted, plane waves converge in principle. The issue here is the missing valence-subspace constraint, not an energy tending to $-\infty$.
+
+\section*{8. Orthogonalized plane waves}
+Let $\{\ket{\chi_{c\vct k}}\}$ be orthonormal core Bloch states at the chosen $\vct k$. Define
+\[
+P_c=\sum_c\ket{\chi_{c\vct k}}\bra{\chi_{c\vct k}},\qquad Q=1-P_c.
+\]
+Replace each plane wave by its component orthogonal to the occupied core:
+\[
+\boxed{\ket{\widetilde w_{\vct k+\vct G}}
+=Q\ket{\vct k+\vct G}
+=\ket{\vct k+\vct G}
+-\sum_c\ket{\chi_{c\vct k}}\braket{\chi_{c\vct k}}{\vct k+\vct G}.}
+\]
+Indeed $\bra{\chi_{d\vct k}}Q=0$, so every linear combination remains orthogonal to all core states. These are orthogonalized plane waves (OPWs). They need not be mutually orthonormal: their overlap matrix is
+\[
+S_{\vct G\vct G'}=\delta_{\vct G\vct G'}
+-\sum_c\braket{\vct k+\vct G}{\chi_{c\vct k}}
+\braket{\chi_{c\vct k}}{\vct k+\vct G'}.
+\]
+Null or linearly dependent combinations must be removed before solving the generalized eigenproblem.
+
+\section*{9. Physical and pseudo wavefunctions}
+Expand a smooth auxiliary function in ordinary plane waves,
+\[
+\varphi_{\vct k}(\vct r)=\sum_{\vct G}a_{\vct G}
+\frac{\ee^{\ii(\vct k+\vct G)\cdot\vct r}}{\sqrt\Omega}.
+\]
+The physical OPW state is
+\[
+\boxed{\ket{\psi_{\vct k}}=Q\ket{\varphi_{\vct k}}
+=\ket{\varphi_{\vct k}}-\sum_c\ket{\chi_{c\vct k}}
+\braket{\chi_{c\vct k}}{\varphi_{\vct k}}.}
+\]
+Equivalently $\varphi=\psi+P_c\varphi$. The pseudo function is not uniquely determined by $\psi$: any added core component is removed by $Q$. A useful representative is chosen to be smooth. Since $\psi$ is already orthogonal to the core, writing $\varphi=Q\psi$ would merely give $\varphi=\psi$ and would not express the intended construction. Normalization is $\braket\psi\psi=\bra\varphi Q\ket\varphi=1$; $\varphi$ need not have unit ordinary norm.
+
+\section*{10. Effective Hamiltonian and plane-wave solution}
+\subsection*{(a) Phillips--Kleinman form}
+Assume core eigenstates satisfy $H\ket{\chi_c}=\epsilon_c\ket{\chi_c}$, with a Hermitian $H$. From $H\psi=\epsilon\psi$ and $\psi=(1-P_c)\varphi$,
+\[
+H\varphi-\sum_c\epsilon_c\ket{\chi_c}\braket{\chi_c}{\varphi}
+=\epsilon\varphi-\sum_c\epsilon\ket{\chi_c}\braket{\chi_c}{\varphi}.
+\]
+Rearranging gives
+\[
+\boxed{H^{(\mathrm{eff})}(\epsilon)=H+V_R(\epsilon),\qquad
+V_R(\epsilon)=\sum_c(\epsilon-\epsilon_c)\ket{\chi_c}\bra{\chi_c},}
+\]
+\[
+H^{(\mathrm{eff})}(\epsilon)\varphi=\epsilon\varphi.
+\]
+For a valence energy above all relevant core levels,
+\[
+\bra f V_R\ket f=\sum_c(\epsilon-\epsilon_c)|\braket{\chi_c}f|^2\geq0.
+\]
+The extra nonlocal, energy-dependent repulsion accounts for core orthogonality and counteracts the deep attractive potential in the core region. Writing $H=T+V$ identifies $V_{\rm ps}=V+V_R$. This exact projector construction should not be confused with an arbitrary local potential independent of energy.
+
+\subsection*{(b) Matrix equations and convergence}
+Keep reciprocal vectors satisfying a plane-wave kinetic cutoff, expand $\varphi$ as in Question 9, and project onto each retained plane wave. For a local periodic $V$, the matrix equation is
+\[
+\sum_{\vct G'}\left[
+\frac{\hbar^2|\vct k+\vct G|^2}{2m_e}\delta_{\vct G\vct G'}
++V_{\vct G-\vct G'}+(V_R)_{\vct G\vct G'}(\epsilon)
+\right]a_{\vct G'}=\epsilon a_{\vct G}.
+\]
+Here $V_{\vct G-\vct G'}$ is the Fourier coefficient of the local potential, and
+\[
+(V_R)_{\vct G\vct G'}(\epsilon)=\sum_c(\epsilon-\epsilon_c)
+\braket{\vct k+\vct G}{\chi_c}\braket{\chi_c}{\vct k+\vct G'}.
+\]
+Because the exact projector potential depends on the unknown energy, this is not simply a fixed ordinary matrix eigenproblem. Moving its $\epsilon$ terms to the right gives the equivalent OPW generalized eigenproblem
+\[
+\boxed{\sum_{\vct G'}H^{\rm OPW}_{\vct G\vct G'}a_{\vct G'}
+=\epsilon\sum_{\vct G'}S_{\vct G\vct G'}a_{\vct G'},}
+\]
+\[
+H^{\rm OPW}_{\vct G\vct G'}=
+\bra{\vct k+\vct G}QHQ\ket{\vct k+\vct G'},\quad
+S_{\vct G\vct G'}=\bra{\vct k+\vct G}Q\ket{\vct k+\vct G'}.
+\]
+Solve in the nonsingular retained subspace, increase the cutoff to test convergence, and sample the required $\vct k$ points. Modern transferable pseudopotentials replace the exact energy-dependent construction by a separately generated representation, often with nonlocal angular-momentum channels. A self-consistent electronic potential requires an additional density-update loop.
+
+\section*{11. Why sodium's valence binding is not hydrogen's $1s$ energy}
+Far outside a neutral sodium atom's ten-electron core, the remaining ion has net charge $+e$, so the valence electron sees a $-\kappa/r$ tail. This does \emph{not} make the potential equal to $-\kappa/r$ at all radii. Core screening, exchange, penetration, and orthogonality to occupied core orbitals change the short-range problem.
+
+There are two separate errors in identifying Na $3s$ with H $1s$:
+\begin{enumerate}[label=(\roman*)]
+\item Even in a purely hydrogenic charge-$+1$ potential, the $n=3$ state would have $E_3=-13.6/9\simeq-1.51\,\mathrm{eV}$, not $-13.6\,\mathrm{eV}$. The latter is the $n=1$ ground state of that different Hamiltonian.
+\item Removing the core nodes to construct a nodeless pseudo $s$ orbital does not turn it into the hydrogen $1s$ problem. Its Hamiltonian contains the core-induced effective repulsion derived in Question 10, which modifies the short-range binding while preserving the valence energy.
+\end{enumerate}
+The observed first ionization energy of Na is approximately $5.1391\,\mathrm{eV}$, so the removal energy relative to the continuum is approximately $-5.14\,\mathrm{eV}$ in the convention used by the question. The long-range tail alone cannot calculate this value; a realistic core potential or an equivalent fitted scattering/quantum-defect description is needed. In a many-body interpretation, an experimental ionization energy is a total-energy difference, not automatically an arbitrary approximate HF or KS orbital eigenvalue.
+
+As a numerical characterization, writing $E\simeq-13.6057\,\mathrm{eV}/(n-\delta_s)^2$ gives an effective $n^*\simeq1.627$ and $\delta_s\simeq1.373$ for the Na $3s$ binding. This encodes a short-range core effect; it is not derived merely by replacing the nuclear charge by one.
+
+\section*{12. Pseudo atom}
+A pseudo atom is an auxiliary atomic problem in which the nucleus and tightly bound core electrons are replaced by an effective ionic pseudopotential, while valence electrons are treated explicitly. For Na, this commonly means an effective ten-electron core and one explicit valence electron; a particular pseudopotential may choose a different valence partition.
+
+Within a selected core radius, pseudo radial orbitals are smooth and usually nodeless in the valence channel. Outside that radius they are constructed to reproduce the chosen all-electron valence behavior, with reference energies and scattering properties matched; norm-conserving constructions also match the valence norm inside the core. A pseudo atom is a computational replacement with a specified transferability range, not a new chemical element.
+
+\begin{center}
+\begin{tikzpicture}[x=1.3cm,y=1cm,>=Stealth]
+\draw[->] (0,0)--(5.2,0) node[right] {$r$};
+\draw[->] (0,-1.0)--(0,1.65) node[above] {radial function};
+\draw[dashed] (2.2,-0.95)--(2.2,1.45) node[above] {$r_c$};
+\draw[very thick,blue] (0,0) .. controls (0.35,-1.05) and (0.7,-0.8) .. (0.85,0)
+.. controls (1.15,1.0) and (1.7,1.15) .. (2.2,1.0)
+.. controls (3.1,0.75) and (4.1,0.2) .. (4.9,0.08);
+\draw[very thick,red!70!black,densely dashed] (0,0) .. controls (0.65,0.55) and (1.55,1.2) .. (2.2,1.0)
+.. controls (3.1,0.75) and (4.1,0.2) .. (4.9,0.08);
+\draw[blue,very thick] (2.9,1.55)--(3.35,1.55) node[right,black] {all-electron};
+\draw[red!70!black,very thick,densely dashed] (2.9,1.15)--(3.35,1.15) node[right,black] {pseudo};
+\end{tikzpicture}
+
+\small Schematic only: smooth replacement inside $r_c$, matching outside. The number of depicted inner nodes is illustrative, not a computed Na $3s$ radial solution.
+\end{center}
+
+\section*{Primary references used for checks}
+\begin{itemize}
+\item \href{https://journals.aps.org/pr/abstract/10.1103/PhysRev.136.B864}{P. Hohenberg and W. Kohn, Phys. Rev. 136, B864 (1964)} and
+\href{https://journals.aps.org/pr/abstract/10.1103/PhysRev.140.A1133}{W. Kohn and L. J. Sham, Phys. Rev. 140, A1133 (1965)}: the density-functional and auxiliary-orbital framework.
+\item \href{https://journals.aps.org/pr/abstract/10.1103/PhysRev.116.287}{J. C. Phillips and L. Kleinman, ``New Method for Calculating Wave Functions in Crystals and Molecules,'' Phys. Rev. 116, 287 (1959)}: OPW orthogonality and the effective repulsive potential.
+\item \href{https://physics.nist.gov/cgi-bin/Elements/elInfo.pl?context=text\&element=11}{NIST elemental data for sodium}.
+The ground configuration is $[\mathrm{Ne}]3s$. The first ionization energy is $5.13907696\,\mathrm{eV}$.
+\end{itemize}

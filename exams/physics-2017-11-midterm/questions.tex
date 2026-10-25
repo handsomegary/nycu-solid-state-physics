@@ -1,0 +1,98 @@
+\chapter{Solid State Physics: Midterm Exam, November 8, 2017}
+\label{q:physics-2017-11-midterm}
+\textbf{Printed total: 100\%.}
+\begin{sourceNote}
+Reconstructed from two complete exam pages. The two-atoms-per-primitive-cell premise in Question 3 and the estimate in Question 9(e) are retained as printed; their interpretation is addressed in the solutions.
+\end{sourceNote}
+
+\section*{1. Primitive vectors of the same lattice (5\%)}
+Find the value of $\alpha$ if two sets of primitive vectors
+$\vct t_1,\vct t_2,\vct t_3$ and $\vct s_1,\vct s_2,\vct s_3$ span the same Bravais lattice and
+\begin{align*}
+\vct s_1&=2\vct t_1-\vct t_2+2\vct t_3,\\
+\vct s_2&=-\vct t_1+\vct t_2+\alpha\vct t_3,\\
+\vct s_3&=\vct t_1+\alpha\vct t_2+\vct t_3.
+\end{align*}
+
+\section*{2. Silicon crystal (5\%)}
+Describe silicon crystal in terms of the Bravais lattice and basis vectors.
+
+\section*{3. Body-centered cubic lattice (20\%)}
+An elemental crystal is formed in the body-centered cubic lattice with lattice constant $a$. There are two atoms in each primitive cell.
+\begin{enumerate}[label=(\alph*)]
+\item (5\%) What is macroscopically the volume density of atoms, i.e., the number of atoms per unit volume?
+\item (5\%) What is the volume of the Wigner--Seitz cell of the bcc lattice?
+\item (5\%) What is the volume of the Brillouin zone for the crystal?
+\item (5\%) How many facets does the Brillouin zone have? Explain your answer.
+\end{enumerate}
+
+\section*{4. Reciprocal lattice and plane density (10\%)}
+Consider a Bravais lattice spanned by the primitive vectors
+\[
+\vct t_1=\frac a2(0,1,1),\qquad
+\vct t_2=\frac a2(1,0,1),\qquad
+\vct t_3=\frac a2(1,1,0).
+\]
+\begin{enumerate}[label=(\alph*)]
+\item (5\%) Find the three primitive vectors $\vct g_1,\vct g_2,\vct g_3$ that span the reciprocal lattice and satisfy $\vct t_i\cdot\vct g_j=2\pi\delta_{ij}$, $i,j=1,2,3$.
+\item (5\%) Consider a family of direct lattice planes with a distance $d$ between two successive lattice planes. Find the density of lattice points (number of lattice points per unit area) of each of the lattice planes.
+\end{enumerate}
+
+\section*{5. Born--von Karman sum (5\%)}
+Evaluate the sum
+\[
+\frac1V\sum_{\vct k} k_x k_y k_z
+\exp\!\left(-\frac{k_x^2}{\alpha}-\frac{k_y^2}{\beta}-\frac{k_z^2}{\gamma}\right)
+\]
+over all $\vct k$ allowed by the Born--von Karman cyclic boundary condition, where $V$ is the system volume and $\alpha,\beta,\gamma>0$.
+
+\section*{6. Bloch translation (5\%)}
+If a crystal wavefunction indexed by $\vct k$ obeying the Bloch theorem is $f(\vct r)$ in the Wigner--Seitz cell containing lattice point $\vct t_n$, what is the wavefunction in the Wigner--Seitz cell containing lattice point $\vct t_m$?
+
+\section*{7. Anisotropic dispersion (12\%)}
+Consider a band of dispersion
+\[
+\varepsilon_{\vct k}=\varepsilon_0+
+\frac{(k_x-k_0)^2}{\alpha}+\frac{k_y^2}{\beta}+\frac{k_z^2}{\gamma},
+\qquad \alpha,\beta,\gamma>0,
+\]
+for a crystal of volume $V$.
+\begin{enumerate}[label=(\alph*)]
+\item (6\%) Where is the critical point? What type is the critical point?
+\item (6\%) Find the density of states for the band.
+\end{enumerate}
+
+\section*{8. Free-electron gas in an fcc metal (12\%)}
+Consider an electron gas in a simple crystal of metal composed of atoms of each with three valence electrons when isolated. The crystal is in the face-centered cubic lattice with lattice constant $a$. The electron gas consists of the electrons originating from all the valence electrons of atoms, and can be regarded as a free-electron gas. What are $r_s$, $k_F$, and $\varepsilon_F$, and the average electron energy at $T=0$?
+
+\section*{9. Sommerfeld expansion (26\%)}
+The Sommerfeld expansion to order $(T/T_F)^2$,
+\[
+\int_{-\infty}^{\infty}\Gamma(\varepsilon)f(\varepsilon)\dd\varepsilon
+=\int_{-\infty}^{\mu}\Gamma(\varepsilon)\dd\varepsilon
++\frac{\pi^2}{6}(\kb T)^2\Gamma'(\mu),
+\]
+is useful for solving the following problems.
+\begin{enumerate}[label=(\alph*)]
+\item (6\%) Show that the change in the chemical potential $\mu$ of a free-electron gas with temperature $T$ satisfies
+\[
+\frac{\dd\mu}{\dd T}=-\frac{\pi^2}{3}\kb^2T\frac{D'(\mu)}{D(\mu)},
+\]
+where $D$ is the density of states.
+\item (5\%) From (a), show that for a three-dimensional free-electron gas,
+\[
+\mu(T)=\mu_0\left[1-\frac{\pi^2}{12}(T/T_F)^2\right],
+\]
+where $\mu_0$ is the chemical potential at $T=0$ (i.e., the Fermi energy).
+\item (5\%) Show that the internal energy of the electron gas is
+\[
+U(T)=\int_{-\infty}^{\mu}\varepsilon D(\varepsilon)\dd\varepsilon
++\frac{\pi^2}{6}(\kb T)^2[D(\mu)+\mu D'(\mu)].
+\]
+\item (5\%) Show that the electronic heat capacity at constant volume is
+\[
+C_V(T)=\frac{\pi^2}{3}\kb^2T D(\mu_0).
+\]
+\item (5\%) Explain that the electron gas has a heat capacity
+$C_V\approx\frac32\kb N\frac{T}{T_F}$ rather than the classical value $\frac32\kb N$, where $N$ is the number of electrons.
+\end{enumerate}

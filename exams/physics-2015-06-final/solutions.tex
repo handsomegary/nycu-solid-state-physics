@@ -1,0 +1,235 @@
+\chapter{Solutions: Final Exam, June 25, 2015}
+\label{s:physics-2015-06-final}
+The electronic and vibrational conventions are stated explicitly below. In particular, a band is counted before separately resolving spin unless otherwise specified, and phonon polarization vectors are mass-weighted as in the hint.
+
+\section*{1. Bloch sums and their role in tight binding}
+Let $\phi_{\nu a}(\vct r-\vct R-\vct\tau_\nu)$ be a localized orbital of type $a$ on basis atom $\nu$ in the cell at $\vct R$. For $N$ cells with periodic boundary conditions, define
+\[
+\boxed{\Phi_{\nu a,\vct k}(\vct r)
+=\frac1{\sqrt N}\sum_{\vct R}\ee^{\ii\vct k\cdot\vct R}
+\phi_{\nu a}(\vct r-\vct R-\vct\tau_\nu)}.
+\]
+The factor $N^{-1/2}$ is conventional; if orbitals on different sites overlap, the overlap matrix still determines the final normalization.
+
+For any Bravais translation $\vct T$, reindex the sum by $\vct R'=\vct R-\vct T$:
+\begin{align*}
+\Phi_{\nu a,\vct k}(\vct r+\vct T)
+&=\frac1{\sqrt N}\sum_{\vct R'}
+\ee^{\ii\vct k\cdot(\vct R'+\vct T)}
+\phi_{\nu a}(\vct r-\vct R'-\vct\tau_\nu)\\
+&=\ee^{\ii\vct k\cdot\vct T}\Phi_{\nu a,\vct k}(\vct r).
+\end{align*}
+The sum therefore has precisely the Bloch translation property.
+
+In tight binding, these symmetry-adapted localized-orbital sums form the basis at each wave vector:
+\[
+\psi_{n\vct k}=\sum_{\nu a}c_{\nu a}^{(n)}(\vct k)\Phi_{\nu a,\vct k}.
+\]
+Projecting the Schr\"odinger equation onto this basis gives
+\[
+\boxed{H(\vct k)c_n=E_n(\vct k)S(\vct k)c_n},
+\]
+where $H_{ij}=\langle\Phi_i|\hat H|\Phi_j\rangle$ and
+$S_{ij}=\langle\Phi_i|\Phi_j\rangle$. In an orthonormal model, $S=I$.
+Translational symmetry has reduced an extensive real-space problem to a finite matrix at each $\vct k$; hopping between localized orbitals determines the matrix entries and their wave-vector-dependent phases.
+
+\section*{2. Five orbitals per Si atom and the band count}
+For electrical and bonding properties, retain the valence $3s$ and three $3p$ orbitals. A useful fifth orbital is an excited effective $s$-like orbital $s^*$, giving the conventional
+\[
+\boxed{\{3s,3p_x,3p_y,3p_z,s^*\}\quad(sp^3s^*)}
+\]
+basis. The $s^*$ orbital improves the description of conduction bands; in an empirical model it is an effective excited orbital, not a claim that the isolated atom already occupies a fifth valence orbital. The filled $1s$, $2s$, and $2p$ shells are treated as core states for this low-energy model. The original model is described by
+\href{https://www.sciencedirect.com/science/article/pii/0022369783900641}{Vogl, Hjalmarson, and Dow (1983)}.
+
+Silicon has two atoms per diamond primitive cell. Five orbital functions per atom therefore yield
+\[
+\boxed{2\times5=10\ \text{bands before explicit spin resolution}}.
+\]
+Each atom supplies four valence electrons, so each primitive cell supplies eight. A filled band accommodates two electrons per primitive cell when both spins are included. Hence
+\[
+\boxed{\frac{2\times4}{2}=4\ \text{fully occupied valence bands}}.
+\]
+The other six bands of this model are unoccupied in the undoped ground state. If spin is represented explicitly, the matrix has dimension twenty and eight spin-resolved bands are occupied. These conventions are consistent with the
+\href{https://www.nextnano.com/docu/nextnano3/tutorials/1D_TightBinding_bulk.html}{nextnano implementation of the $sp^3s^*$ model}.
+
+\section*{3. Why a direct all-electron plane-wave expansion is expensive}
+At fixed $\vct k$, a Bloch wave can be expanded as
+\[
+\psi_{n\vct k}(\vct r)=\sum_{\vct G}c_{n\vct k}(\vct G)
+\ee^{\ii(\vct k+\vct G)\cdot\vct r}.
+\]
+Near a nucleus, the all-electron potential varies strongly and the wavefunctions contain short spatial scales. Valence functions must also remain orthogonal to localized core states, producing nodes and rapid core-region variation. Resolving a length scale $\ell$ requires components with $|\vct k+\vct G|$ of order $1/\ell$. A kinetic-energy cutoff
+\[
+\frac{\hbar^2|\vct k+\vct G|^2}{2m_e}\le E_{\rm cut}
+\]
+then requires a very large $E_{\rm cut}$ and many plane waves, even if only valence energies are sought. The basis is valid, but direct all-electron convergence can be inefficient.
+
+One remedy is to replace the core-region problem by a pseudopotential with smooth pseudo-valence functions. Alternatively, augmented-plane-wave or projector-augmented-wave approaches retain or reconstruct atomic core-region structure while using smoother representations elsewhere. Orthogonalized-plane-wave methods also account explicitly for the core orthogonality constraint. In each case, the objective is to represent the sharp atomic behavior without forcing a uniform plane-wave basis to resolve every core length scale directly.
+
+\section*{4. Pseudopotentials and smooth pseudo-wavefunctions}
+A pseudopotential is an effective electron--ion operator replacing the explicit nuclear attraction and core-electron effects in a valence calculation. It is constructed to reproduce relevant valence eigenvalues and scattering behavior outside a chosen core region. It can be angular-momentum dependent and nonlocal; it need not be a single scalar function of position.
+
+A pseudo-wavefunction follows the required valence behavior outside the core but replaces the rapid all-electron oscillations inside it by a smoother function. Its large-$|\vct G|$ Fourier coefficients are therefore much smaller. A substantially lower plane-wave cutoff can represent it to a chosen accuracy.
+
+This is an approximation with a chosen core--valence partition and transferability range. Smoothness does not itself guarantee correct bonding in every environment, and the cutoff must still be converged. Practical construction and validation requirements are discussed in
+\href{https://www.quantum-espresso.org/wp-content/uploads/2022/03/pseudo-gen.pdf}{Quantum ESPRESSO, Notes on pseudopotential generation}.
+
+\section*{5. The adiabatic energy surface}
+Collect all nuclear positions into $\vct R$ and the electronic coordinates into $\vct r$. For fixed nuclei, solve the electronic eigenproblem
+\[
+\hat H_e(\vct R)\Psi_n(\vct r;\vct R)
+=\mathcal E_n(\vct R)\Psi_n(\vct r;\vct R).
+\]
+The adiabatic potential-energy surface for nuclear motion is
+\[
+\boxed{E_n(\vct R)=\mathcal E_n(\vct R)+V_{NN}(\vct R)},
+\]
+where $V_{NN}$ is the nucleus--nucleus repulsion. If that term has already been included in $\hat H_e$, it must not be added a second time.
+
+The electronic eigenproblem is solved parametrically as the nuclei move. In the Born--Oppenheimer approximation, nuclei move on a selected surface, neglecting transitions to other electronic surfaces and the associated nonadiabatic couplings. Nuclear kinetic energy is not part of this potential-energy surface. Its gradient determines the forces, and its Hessian determines harmonic restoring forces about equilibrium.
+
+\section*{6. Obtaining lattice normal modes from the ground surface}
+\subsection*{Equilibrium and harmonic force constants}
+First locate a stationary nuclear configuration $\vct R^0$ with
+$\partial E_0/\partial R_{i\alpha}=0$. Let
+$u_{i\alpha}=R_{i\alpha}-R^0_{i\alpha}$, where $i$ labels atoms and $\alpha$ labels Cartesian components. Expand
+\[
+E_0(\vct R^0+\vct u)=E_0(\vct R^0)
++\frac12\sum_{i\alpha,j\beta}\Phi_{i\alpha,j\beta}
+ u_{i\alpha}u_{j\beta}+O(u^3),
+\qquad
+\Phi_{i\alpha,j\beta}
+=\left.\frac{\partial^2E_0}{\partial R_{i\alpha}\partial R_{j\beta}}\right|_{\vct R^0}.
+\]
+The linear term vanishes at equilibrium. The Hessian is the harmonic force-constant matrix, obtained analytically or by converged finite differences of energies or forces.
+
+\subsection*{Mass weighting and the eigenproblem}
+Newton's equations in the harmonic approximation are
+\[
+M_i\ddot u_{i\alpha}=-\sum_{j\beta}\Phi_{i\alpha,j\beta}u_{j\beta}.
+\]
+Substitute $u_{i\alpha}(t)=A_{i\alpha}\ee^{-\ii\omega t}/\sqrt{M_i}$. This gives
+\[
+\sum_{j\beta}\mathcal D_{i\alpha,j\beta}A_{j\beta}=\omega^2 A_{i\alpha},
+\qquad
+\boxed{\mathcal D_{i\alpha,j\beta}
+=\frac{\Phi_{i\alpha,j\beta}}{\sqrt{M_iM_j}}}.
+\]
+Diagonalizing the real-space mass-weighted Hessian yields the squared normal-mode frequencies and orthonormal polarization vectors. The physical displacements are obtained by dividing each atomic block of an eigenvector by $\sqrt{M_i}$.
+
+\subsection*{Periodic crystal and stability}
+For a periodic crystal with $r$ atoms per primitive cell, Fourier transformation block-diagonalizes the problem into a $3r\times3r$ dynamical matrix at each allowed $\vct q$. The next answer gives its entries. The branches $\omega_p(\vct q)$ and their eigenvectors are the lattice normal modes.
+
+Translational invariance imposes the acoustic sum rule
+\[
+\sum_j\Phi_{i\alpha,j\beta}=0
+\]
+for every $i,\alpha,\beta$. Thus three rigid translations have zero frequency at $\vct q=0$. A mechanically stable harmonic equilibrium has no negative $\omega^2$; negative eigenvalues describe an instability rather than ordinary oscillations. A nondegenerate, well-separated \emph{electronic} ground surface justifies the adiabatic treatment but does not by itself prove that a chosen nuclear configuration is a local minimum.
+
+\section*{7. Dynamical-matrix elements and phase convention}
+To remove a notational ambiguity, use the symbol $D$ exactly as in the question for the force constants, and $\mathcal D$ for the mass-weighted dynamical matrix. Adopt
+\[
+D_{\nu\alpha,\nu'\alpha'}(\vct t_n)
+=\left.\frac{\partial^2E_0}
+{\partial u_{0\nu\alpha}\,\partial u_{n\nu'\alpha'}}\right|_0.
+\]
+Choose the displacement convention
+\[
+u_{n\nu\alpha}(t)=\frac{A_{\nu\alpha}(\vct q)}{\sqrt{M_\nu}}
+\ee^{\ii\vct q\cdot\vct t_n-\ii\omega t}.
+\]
+Inserting this into the equation of motion for atom $(0,\nu)$ gives
+\[
+\boxed{\mathcal D_{\nu\alpha,\nu'\alpha'}(\vct q)
+=\frac1{\sqrt{M_\nu M_{\nu'}}}
+\sum_n D_{\nu\alpha,\nu'\alpha'}(\vct t_n)
+\ee^{\ii\vct q\cdot\vct t_n}},
+\]
+and the eigenproblem
+\[
+\sum_{\nu'\alpha'}\mathcal D_{\nu\alpha,\nu'\alpha'}(\vct q)
+A_{\nu'\alpha'}=\omega^2 A_{\nu\alpha}.
+\]
+Hessian symmetry and translation invariance give
+$D_{\nu\alpha,\nu'\alpha'}(\vct t_n)
+=D_{\nu'\alpha',\nu\alpha}(-\vct t_n)$, so $\mathcal D(\vct q)$ is Hermitian.
+
+If the plane-wave factor is instead defined using the full equilibrium position
+$\vct t_n+\vct\tau_\nu$, the exponential in the boxed matrix becomes
+$\ee^{\ii\vct q\cdot(\vct t_n+\vct\tau_{\nu'}-\vct\tau_\nu)}$.
+The two matrices are related by a diagonal unitary change of basis and have identical frequencies. Stating the convention prevents an apparent phase disagreement from becoming a physical one.
+
+\section*{8. Counting BaTiO$_3$ vibrational degrees of freedom}
+There are $r=5$ atoms per cell and three displacement coordinates per atom.
+\begin{enumerate}[label=(\alph*)]
+\item At each $\vct q$, the Fourier-space dynamical matrix acts on $3r=15$ coordinates, so its dimension is
+\[
+\boxed{15\times15}.
+\]
+If ``dynamical matrix'' instead refers to the complete real-space system of $N$ cells, its dimension is $15N\times15N$. The standard band/branch formulation uses the first convention.
+\item There are $N$ allowed wave vectors and fifteen modes at each one:
+\[
+\boxed{15N\ \text{normal modes}}.
+\]
+The real-displacement condition relates complex amplitudes at $\vct q$ and $-\vct q$; it does not halve the total number of real mechanical degrees of freedom.
+\item The three rigid translations evolve into three acoustic branches:
+\[
+\boxed{3\ \text{acoustic branches}}.
+\]
+\item The remaining branches are optical:
+\[
+\boxed{3r-3=12\ \text{optical branches}}.
+\]
+Each branch contains $N$ normal modes, so the corresponding mode counts are $3N$ acoustic and $12N$ optical.
+\end{enumerate}
+
+\section*{9. Long-wavelength optical polarization vectors}
+The hint uses \emph{mass-weighted} vectors $\vct A_\nu$, not the actual atomic displacements. At $\vct q=0$, a rigid translation in direction $\hat{\vct e}_\alpha$ has a mass-weighted eigenvector proportional to
+\[
+\left(\sqrt{M_1}\hat{\vct e}_\alpha,
+      \sqrt{M_2}\hat{\vct e}_\alpha\right).
+\]
+A finite-frequency optical eigenvector of the Hermitian dynamical matrix is orthogonal to each of the three zero-frequency translational vectors. Component by component this implies
+\[
+\sqrt{M_1}\vct A_1+\sqrt{M_2}\vct A_2=0,
+\qquad
+\vct A_2=-\sqrt{\frac{M_1}{M_2}}\vct A_1.
+\]
+Therefore
+\[
+\vct A_1^*\cdot\vct A_2
+=-\sqrt{\frac{M_1}{M_2}}\abs{\vct A_1}^2,
+\qquad
+\boxed{\frac{\abs{\vct A_1}^2}{\vct A_1^*\cdot\vct A_2}
+=-\sqrt{\frac{M_2}{M_1}}}.
+\]
+The result is unchanged by a common complex phase of the mode. In terms of the \emph{physical} displacement amplitudes $\vct u_\nu=\vct A_\nu/\sqrt{M_\nu}$, the corresponding relation is
+\[
+\vct u_2=-\frac{M_1}{M_2}\vct u_1,
+\qquad M_1\vct u_1+M_2\vct u_2=0.
+\]
+The unit-cell center of mass is stationary in the optical limit. The square-root mass ratio in the requested answer arises specifically from the mass-weighted convention in the hint.
+
+\begin{center}
+\begin{tikzpicture}[>=Latex]
+\draw[gray,dashed] (-.5,0)--(5,0);
+\fill[blue!60!black] (1,0) circle (5pt);
+\fill[blue!60!black] (3.5,0) circle (7pt);
+\draw[->,thick] (1,.4)--(2.2,.4) node[midway,above] {$\vct u_1$};
+\draw[->,thick] (3.5,.4)--(2.8,.4) node[midway,above] {$\vct u_2$};
+\node[below] at (1,-.1) {$M_1$};
+\node[below] at (3.5,-.1) {$M_2$};
+\node[below] at (2.25,-.65) {$M_1\vct u_1+M_2\vct u_2=0$};
+\end{tikzpicture}
+\end{center}
+The schematic shows opposite motion; arrow lengths are illustrative. At an exactly soft optical instability, the optical subspace must be selected orthogonally to translations before taking the zero-frequency limit. The standard finite-frequency optical limit is assumed in the question.
+
+\section*{References and checks}
+The preceding formulas follow from the displayed translation, state-counting, and Hessian arguments. The primary sources used to check conventions are:
+\begin{itemize}
+\item \href{https://www.sciencedirect.com/science/article/pii/0022369783900641}{P. Vogl, H. P. Hjalmarson, and J. D. Dow, A Semi-empirical tight-binding theory of the electronic structure of semiconductors (1983)}: the $sp^3s^*$ basis.
+\item \href{https://www.nextnano.com/docu/nextnano3/tutorials/1D_TightBinding_bulk.html}{nextnano, Empirical tight-binding $sp^3s^*$ band structure}: ten-orbital and twenty-spin-orbital matrix conventions.
+\item \href{https://www.quantum-espresso.org/wp-content/uploads/2022/03/pseudo-gen.pdf}{Quantum ESPRESSO, Notes on pseudopotential generation}: effective-core construction and validation.
+\item \href{https://www.quantum-espresso.org/Doc/INPUT_DYNMAT.html}{Quantum ESPRESSO, dynmat.x documentation}: orthogonal dynamical-matrix eigenvectors versus physical displacements divided by square roots of masses.
+\item \href{https://davidtong.org/pdfs/teaching/solid-state-physics/solidstate4.pdf}{David Tong, Solid State Physics, Chapter 4}: lattice vibrations and acoustic/optical branches.
+\end{itemize}

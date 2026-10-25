@@ -1,0 +1,37 @@
+name: Verify and build books
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check source archive and derivations
+        run: |
+          python tools/verify_archive.py
+          python tools/run_checks.py
+      - name: Install document tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-xetex texlive-latex-extra texlive-science fonts-texgyre
+          python -m pip install pypdf
+      - name: Rebuild both books and inspect PDFs
+        run: |
+          python tools/build_documents.py --publish
+          python tools/verify_archive.py --pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: english-solid-state-books
+          path: |
+            questions/questions.pdf
+            solutions/solutions.pdf

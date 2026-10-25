@@ -1,0 +1,313 @@
+\chapter{Solid State Theory: April 23, 2021 --- Solutions}
+\label{s:theory-2021-04-midterm}
+\begin{sourceNote}
+These are independent solutions, not an official answer key. Several true/false statements require a convention or a qualification; those conditions are stated rather than hidden. Reciprocal vectors use $\mathbf g_i\cdot\mathbf t_j=2\pi\delta_{ij}$.
+\end{sourceNote}
+
+\section*{1. True/false, with reasons and necessary qualifications}
+\subsection*{(a) Diamond sites form a Bravais lattice: false}
+Diamond consists of an FCC Bravais lattice with a two-atom basis, for example $\mathbf d_1=0$, $\mathbf d_2=(a/4)(1,1,1)$. Translating by $\mathbf d_2$ sends the first atom to the second but does not map the entire crystal to itself: twice that displacement is not a diamond site relative to the chosen origin. The carbon sites are therefore not a one-site Bravais lattice.
+
+\subsection*{(b) The two vector pairs span the same lattice: false}
+The primitive parallelogram areas would be
+\[
+|\det(\mathbf t_1,\mathbf t_2)|=|2ab-ab|=ab,\qquad
+|\det(\mathbf s_1,\mathbf s_2)|=|-ab+6ab|=5ab.
+\]
+More explicitly,
+\[
+\mathbf s_1=4\mathbf t_1+7\mathbf t_2,\qquad
+\mathbf s_2=-3\mathbf t_1-4\mathbf t_2,
+\quad
+M=\begin{pmatrix}4&-3\\7&-4\end{pmatrix},\quad\det M=5.
+\]
+An integer basis change preserves a lattice only if its determinant is $\pm1$. Here the $\mathbf s$ vectors generate an index-5 sublattice of the $\mathbf t$ lattice, with only one fifth as many sites per unit area.
+
+\subsection*{(c) Same point group implies same crystal system: true}
+With point group understood as the full crystallographic point group, two Bravais lattices with that same group belong to the same crystal system. They may differ in centering. For example, primitive, body-centered, and face-centered cubic Bravais lattices are distinct but all belong to the cubic system. Sharing merely a subgroup, such as inversion alone, would not suffice.
+
+\subsection*{(d) Same species implies a Bravais translation: false in general}
+Positions have the form $\mathbf R+\mathbf d_\alpha$. The difference of two positions is a Bravais vector only if their basis-site difference is also a Bravais vector. Diamond supplies two carbon atoms whose separation $(a/4)(1,1,1)$ is not an FCC translation.
+The phrase \emph{simple crystal} is not defined in the question. If it is explicitly defined in a course as a one-atom Bravais crystal, the statement is true by that extra definition. Chemical purity or a perfect defect-free crystal alone does not establish it.
+
+\subsection*{(e) Wigner-Seitz and Brillouin-zone product: true for volumes}
+The meaningful interpretation is the product of their volumes. Write the direct and reciprocal basis matrices as $T$ and $G=2\pi T^{-T}$. Then
+\[
+\Omega=|\det T|,\qquad
+\Omega^*=|\det G|=\frac{(2\pi)^3}{\Omega},\qquad
+\boxed{\Omega\Omega^*=(2\pi)^3.}
+\]
+Wigner-Seitz cells have the same volume as the corresponding primitive parallelepipeds. The constant depends on the reciprocal-vector convention; it would be 1 if the $2\pi$ were omitted throughout.
+
+\subsection*{(f) Allowed $\mathbf k$-point density scales with volume: true}
+For $N_i$ cells along each primitive direction, Born-von Karman conditions give
+\[
+\mathbf k=\sum_i\frac{m_i}{N_i}\mathbf g_i,
+\qquad m_i=0,\ldots,N_i-1.
+\]
+There are $N_c=N_1N_2N_3$ inequivalent points per Brillouin zone. If the sample volume is $V=N_c\Omega$, each point occupies reciprocal volume $(2\pi)^3/V$ and
+\[
+\boxed{\frac{\dd N_k}{\dd^3k}=\frac{V}{(2\pi)^3}.}
+\]
+This counts wavevectors; each band and spin supplies additional electronic states. Increasing the sample volume makes the $k$ mesh denser, not sparser.
+
+\subsection*{(g) One cell determines a Bloch eigenstate elsewhere: true}
+For a chosen Bloch state,
+\[
+\psi_{n\mathbf k}(\mathbf r+\mathbf R)=
+\ee^{\ii\mathbf k\cdot\mathbf R}\psi_{n\mathbf k}(\mathbf r).
+\]
+Knowing the wavefunction within one cell and its $\mathbf k$ therefore determines it in every translated cell. The qualification is that a Bloch eigenbasis is chosen: arbitrary linear combinations of degenerate states with different $\mathbf k$ need not possess a single translation phase.
+
+\subsection*{(h) HF energy must be strictly lower than Hartree: qualified}
+As an unconditional assertion of a \emph{strict} inequality, the statement is false. The standard negative-exchange argument compares a fixed orthonormal orbital set:
+\[
+E_{\rm HF}-E_{\rm Hartree\ product}
+=-\frac12\sum_{i\ne j}K_{ij}\leq0,
+\]
+Here $x=(\mathbf r,\sigma)$ includes spin, integration over $x$ includes the spin sum, and $w(\mathbf r-\mathbf r')=e^2/(4\pi\varepsilon_0|\mathbf r-\mathbf r'|)$. The exchange integral is
+\[
+K_{ij}=\int\dd x\dd x'\,
+\chi_i^*(x)\chi_j(x)w(\mathbf r-\mathbf r')\chi_j^*(x')\chi_i(x')\geq0.
+\]
+Thus exchange lowers or leaves unchanged that reference energy. Opposite-spin pairs have zero exchange, and equality is possible when all relevant off-diagonal exchange integrals vanish. A strict decrease needs at least one nonzero such integral. Separately optimized Hartree products and HF determinants also have different variational constraints; a universal ordering cannot be inferred simply by calling one wavefunction antisymmetric. Under the usual classroom fixed-orbital comparison with nonzero exchange, the intended lower-energy conclusion holds with these qualifications.
+
+\subsection*{(i) A self-consistent HF determinant is an exact eigenfunction: false}
+HF makes the energy stationary under variations within the single-determinant manifold. The interacting Hamiltonian can couple that determinant to excited determinants, especially double excitations. In general,
+$\hat H\Phi_{\rm HF}\neq E\Phi_{\rm HF}$.
+An exact single-determinant eigenstate is a special case, not a consequence of solving the HF equations.
+
+\subsection*{(j) A self-consistent HF determinant is the best many-body state: false as written}
+The variational minimum satisfies
+\[
+E_0\leq\min_{\Phi\ {\rm single\ determinant}}\langle\Phi|\hat H|\Phi\rangle
+=E_{\rm HF}^{\min}.
+\]
+Correlated wavefunctions outside this restricted class can lower the energy. Moreover, a solution of the HF equations can be a local minimum or another stationary point, rather than the global determinant minimum. The precise valid claim is: \emph{the globally minimizing HF determinant is the best energy approximation within the class of allowed single determinants}. It need not be the best wavefunction among all many-electron states.
+
+\subsection*{(k) The unpolarized homogeneous gas always has lower energy: false}
+Interpret the normal state as the unpolarized uniform state. The competition depends on density: polarization increases Fermi kinetic energy but makes exchange more negative. This is explicit in the uniform Hartree-Fock model. In atomic units, let
+\[
+k_F=(3\pi^2n)^{1/3}=\frac{c_0}{r_s},\quad
+c_0=(9\pi/4)^{1/3},\quad
+\zeta=\frac{n_\uparrow-n_\downarrow}{n}.
+\]
+With the positive background canceling the uniform Hartree term, the energy per electron is
+\[
+e_{\rm HF}(\zeta)=
+\frac{3k_F^2}{20}\big[(1+\zeta)^{5/3}+(1-\zeta)^{5/3}\big]
+-\frac{3k_F}{8\pi}\big[(1+\zeta)^{4/3}+(1-\zeta)^{4/3}\big].
+\]
+The powers follow from each spin Fermi sphere: kinetic energy density scales as $n_\sigma^{5/3}$ and exchange as $-n_\sigma^{4/3}$. Comparing $\zeta=1$ with $\zeta=0$ gives
+\[
+\Delta e=\frac{3k_F^2}{10}(2^{2/3}-1)
+-\frac{3k_F}{4\pi}(2^{1/3}-1).
+\]
+At high density the first term wins; at lower density the second can win. These two uniform HF branches cross at
+\[
+r_s^*=\frac{2\pi c_0}{5}(2^{1/3}+1)\simeq5.45.
+\]
+This example concerns uniform HF states; it is not a claim that this is the exact phase boundary of the correlated electron gas. Correlation and other possible ordered states require separate treatment. There is no density-independent energy-ordering theorem of the asserted form.
+
+\subsection*{(l) Electron density depends on external potential: true for the physical density}
+For a fixed electron number and interaction, the physical density is the minimizer
+\[
+n_0[v]=\mathop{\rm arg\,min}_n\left(F[n]+\int v(\mathbf r)n(\mathbf r)\,\dd^3r\right).
+\]
+Changing $v$ generally changes $n_0$. What is universal is $F[n]$: it has no \emph{explicit} dependence on the external potential. A trial density used in the variation is an independent argument. Confusing that functional argument with the resulting minimizing density leads to the wrong conclusion.
+
+\subsection*{(m) KS orbitals form the interacting ground-state determinant: false}
+KS orbitals define an auxiliary noninteracting state chosen to reproduce the interacting ground-state \emph{density}. Its Slater determinant is generally not the interacting many-electron wavefunction. Matching a one-body density does not reproduce all pair correlations or all expectation values.
+
+\subsection*{(n) Both density and interacting kinetic energy are KS sums: false}
+With exact KS orbitals and the appropriate occupations,
+\[
+n_0(\mathbf r)=\sum_i f_i|\phi_i(\mathbf r)|^2
+\]
+is correct. But
+\[
+T_s=\sum_i f_i\left\langle\phi_i\left|\frac{\mathbf p^2}{2m}\right|\phi_i\right\rangle
+\]
+is the auxiliary noninteracting kinetic energy, not in general the interacting $T$. The kinetic correlation contribution $T-T_s$ is part of $E_{xc}$. A conjunction is false when its second assertion fails.
+
+\subsection*{(o) KS gives the exact density and energy: true only in the exact theory}
+With the exact exchange-correlation functional, an appropriate KS representation, and the ground-state self-consistent solution, the formal theory yields the exact density and ground-state electronic energy:
+\[
+E_0=T_s[n_0]+E_H[n_0]+E_{xc}[n_0]+\int v_{\rm ext}n_0\,\dd^3r.
+\]
+This does not make practical LDA or other approximate functionals exact. Nor does it identify every KS eigenvalue with a physical excitation energy. The intended formal-theory answer is true; the unconditional assertion about all numerical KS calculations would be false.
+
+\section*{2. Hamiltonian and density-functional terminology}
+\subsection*{(a) Fixed-nuclei many-electron Hamiltonian}
+For nuclei of charge $Z_Ae$ at fixed positions $\mathbf R_A$,
+\begin{align*}
+\hat H_e&=\sum_{i=1}^N\left[-\frac{\hbar^2}{2m}\nabla_i^2
+-\sum_A\frac{Z_Ae^2}{4\pi\varepsilon_0|\mathbf r_i-\mathbf R_A|}\right]
++\sum_{i<j}\frac{e^2}{4\pi\varepsilon_0|\mathbf r_i-\mathbf r_j|},\\
+E_{NN}&=\sum_{A<B}\frac{Z_AZ_Be^2}{4\pi\varepsilon_0|\mathbf R_A-\mathbf R_B|}.
+\end{align*}
+The three electronic terms are kinetic energy, electron-nucleus attraction, and electron-electron repulsion. The full fixed-configuration energy includes the constant $E_{NN}$. Nuclear kinetic energy is absent because the nuclei are held fixed. The $i<j$ and $A<B$ restrictions count each pair once. Other applied external potentials can be added to the one-electron potential. The electronic wavefunction must be antisymmetric in electron space-spin coordinates.
+
+\subsection*{(b) Hohenberg-Kohn functional}
+The universal interacting functional can be expressed by constrained search:
+\[
+F[n]=\min_{\Psi\to n}\langle\Psi|\hat T+\hat W_{ee}|\Psi\rangle.
+\]
+For a specified external potential,
+\[
+E_v[n]=F[n]+\int v(\mathbf r)n(\mathbf r)\,\dd^3r,
+\qquad E_0=\min_{n\ {m admissible},\,\int n=N}E_v[n].
+\]
+The first HK theorem relates ground-state density to external potential, up to an additive constant under its usual assumptions; the second establishes the density variational principle. $F$ is independent of which fixed nuclear configuration produces $v$, while its minimizing density is not.
+
+\subsection*{(c) Exchange-correlation functional}
+Define the noninteracting kinetic functional $T_s[n]$ and classical Coulomb functional
+\[
+E_H[n]=\frac12\int\dd^3r\dd^3r'\,
+\frac{e^2n(\mathbf r)n(\mathbf r')}{4\pi\varepsilon_0|\mathbf r-\mathbf r'|}.
+\]
+Then
+\[
+\boxed{E_{xc}[n]=F[n]-T_s[n]-E_H[n]
+=(T[n]-T_s[n])+(W_{ee}[n]-E_H[n]).}
+\]
+The second expression refers to the constrained-search minimizing interacting state. Exchange, correlation beyond classical Coulomb repulsion, self-interaction cancellation, and the kinetic correction are included. The potential entering the KS equation is $v_{xc}(\mathbf r)=\delta E_{xc}/\delta n(\mathbf r)$.
+
+\subsection*{(d) Local density approximation}
+LDA uses the exchange-correlation energy per electron of a uniform gas at the local density:
+\[
+\boxed{E_{xc}^{\rm LDA}[n]=\int n(\mathbf r)
+\varepsilon_{xc}^{\rm unif}(n(\mathbf r))\,\dd^3r.}
+\]
+Its potential is $v_{xc}^{\rm LDA}=\varepsilon_{xc}^{\rm unif}+n\,\dd\varepsilon_{xc}^{\rm unif}/\dd n$, evaluated at the local $n$. It is local in the density and omits explicit gradients and nonlocal correlations. It is motivated by a locally uniform or slowly varying density, rather than by an assumption that all real crystals have uniform charge density.
+
+\section*{3. FCC lattice and the plane perpendicular to a body diagonal}
+\subsection*{(a) Primitive volume and lattice-point density}
+A conventional cubic cell contains $8(1/8)+6(1/2)=4$ FCC lattice points, so
+\[
+\boxed{\Omega=\frac{a^3}{4},\qquad \rho_{\rm lattice}=\frac4{a^3}.}
+\]
+This is a lattice-point density; a separate multi-atom basis would change atom density, not the Bravais-point density.
+
+\subsection*{(b) Direct and reciprocal primitive vectors}
+Choose
+\[
+\mathbf t_1=\frac a2(0,1,1),\quad
+\mathbf t_2=\frac a2(1,0,1),\quad
+\mathbf t_3=\frac a2(1,1,0).
+\]
+Using $\mathbf g_1=2\pi(\mathbf t_2\times\mathbf t_3)/\Omega$ and cyclic permutations gives
+\[
+\boxed{\mathbf g_1=\frac{2\pi}{a}(-1,1,1),\quad
+\mathbf g_2=\frac{2\pi}{a}(1,-1,1),\quad
+\mathbf g_3=\frac{2\pi}{a}(1,1,-1).}
+\]
+Their dot products with the $\mathbf t_j$ verify the reciprocal relation. The reciprocal lattice is BCC, with conventional cubic lattice constant $4\pi/a$.
+
+\subsection*{(c) A (111) layer is a triangular lattice}
+Take the normal along $(1,1,1)$. A basis in a layer is
+\[
+\mathbf u=\mathbf t_2-\mathbf t_1=\frac a2(1,-1,0),\qquad
+\mathbf v=\mathbf t_3-\mathbf t_1=\frac a2(1,0,-1).
+\]
+Both dot products with $(1,1,1)$ vanish. Their lengths are $a/\sqrt2$ and $\mathbf u\cdot\mathbf v=a^2/4$, hence their angle is $60^\circ$. They span a two-dimensional triangular, or two-dimensional hexagonal Bravais, lattice. Its primitive area and planar density are
+\[
+\boxed{A_{111}=\frac{\sqrt3a^2}{4},\qquad
+\sigma_{111}=\frac4{\sqrt3a^2}.}
+\]
+The shortest reciprocal normal is $(2\pi/a)(1,1,1)$, so adjacent lattice layers are separated by $a/\sqrt3$; indeed $A_{111}(a/\sqrt3)=a^3/4$. The triangular lattice of one plane should not be confused with the three-dimensional hexagonal lattice. Consecutive FCC (111) layers have the familiar ABC offsets.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.2,>=Stealth]
+\foreach \i in {-1,0,1,2}{\foreach \j in {-1,0,1,2}{
+\fill[gray] ({\i+\j/2},{.8660254*\j}) circle(1.4pt);}}
+\fill[blue!12] (0,0)--(1,0)--(1.5,.8660254)--(.5,.8660254)--cycle;
+\draw[thick,blue!60!black,->] (0,0)--(1,0) node[midway,below] {$\mathbf u$};
+\draw[thick,blue!60!black,->] (0,0)--(.5,.8660254) node[midway,left] {$\mathbf v$};
+\draw[dashed] (1,0)--(1.5,.8660254)--(.5,.8660254);
+\draw (.32,0) arc (0:60:.32);
+\node at (.52,.27) {$60^\circ$};
+\node[anchor=west] at (3.3,1.05) {$|\mathbf u|=|\mathbf v|=a/\sqrt2$};
+\end{tikzpicture}
+\end{center}
+
+\section*{4. Honeycomb reciprocal lattice, critical points, and DOS}
+\subsection*{(a) Reciprocal primitive vectors}
+The direct-cell area is $A_c=\sqrt3a^2/2$. Solving
+$\mathbf g_i\cdot\mathbf t_j=2\pi\delta_{ij}$ gives
+\[
+\boxed{\mathbf g_1=\frac{2\pi}{a}(1,1/\sqrt3),\qquad
+\mathbf g_2=\frac{2\pi}{a}(-1,1/\sqrt3).}
+\]
+For example, the two equations for $\mathbf g_1$ are
+$ag_{1x}/2+\sqrt3ag_{1y}/2=2\pi$ and
+$-ag_{1x}/2+\sqrt3ag_{1y}/2=0$.
+The reciprocal primitive area is $8\pi^2/(\sqrt3a^2)$, and its product with $A_c$ is $(2\pi)^2$.
+
+\subsection*{(b) Classifying $\Gamma$, $Q$, and $P$}
+Set $x=ak_x$, $y=ak_y$, and $h=|F|^2$. Direct differentiation yields
+\[
+h_x=-2\sin(x/2)\cos(\sqrt3y/2)-4\cos(x/2)\sin(x/2),\qquad
+h_y=-2\sqrt3\cos(x/2)\sin(\sqrt3y/2).
+\]
+For $h>0$, a band is stationary exactly when $\nabla h=0$.
+
+At $\Gamma$, $h=9$ and, for displacement $\mathbf q$,
+\[
+|F|=3-\frac{a^2q^2}{4}+O(a^4q^4),\qquad
+\epsilon_\pm=\epsilon_p\pm3\gamma\mp\frac{\gamma a^2q^2}{4}+O(q^4).
+\]
+Thus the upper band has a smooth maximum and the lower band a smooth minimum, with Hessians $\mp(\gamma a^2/2)I$.
+
+At $Q$, $h=1$ and the dimensionless Hessian is
+\[
+H_h(Q)=\begin{pmatrix}2&\sqrt3\\\sqrt3&0\end{pmatrix}.
+\]
+Its eigenvectors can be chosen as $(\sqrt3/2,1/2)$ and $(-1/2,\sqrt3/2)$, with eigenvalues $3,-1$. In their displacement coordinates $u,v$,
+\[
+|F|=1+\frac{a^2}{4}(3u^2-v^2)+O(a^3q^3),\qquad
+\epsilon_\pm=\epsilon_p\pm\gamma\pm\frac{\gamma a^2}{4}(3u^2-v^2)+O(a^3q^3).
+\]
+Each band has a saddle. In the original coordinates the quadratic correction to $|F|$ is
+$a^2q_x^2/2+\sqrt3a^2q_xq_y/2$, so dropping the mixed term would give an incorrect classification.
+
+At $P$, $h=0$, and
+\[
+h=\frac{3a^2q^2}{4}+O(a^3q^3),\qquad
+\epsilon_\pm=\epsilon_p\pm\frac{\sqrt3\gamma a}{2}|\mathbf q|+O(q^2).
+\]
+This is a Dirac contact: a conical minimum in the upper band and a conical maximum in the lower band. The individual energy-ordered bands are not differentiable at the vertex, so there is no ordinary stationary gradient or quadratic Hessian there. Under a broader definition it is a band-contact critical singularity, not a smooth Morse critical point. Its one-sided directional slopes are finite.
+
+\subsection*{(c) Choosing $Q$: derivation of the logarithmic DOS}
+For the upper band near one $Q$, define
+\[
+E_Q=\epsilon_p+\gamma,\quad e=E-E_Q,\quad
+\alpha=\frac{3\gamma a^2}{4},\quad\beta=\frac{\gamma a^2}{4},\quad
+\epsilon-E_Q\simeq\alpha u^2-\beta v^2.
+\]
+The DOS per unit sample area per spin from that patch is
+\[
+g_Q(E)=\frac1{(2\pi)^2}\int_{\rm patch}\dd u\dd v\,
+\delta(e-\alpha u^2+\beta v^2).
+\]
+Let $X=\sqrt\alpha u$, $Y=\sqrt\beta v$, then $U=X+Y$, $V=X-Y$. The energy becomes $UV$ and
+$\dd u\dd v=\dd U\dd V/(2\sqrt{\alpha\beta})$.
+Choose a small cutoff patch $|U|,|V|<L$. For $0<|e|<L^2$, integration over $V$ gives $1/|U|$ only when $|U|>|e|/L$. Hence
+\begin{align*}
+g_Q(E)&\simeq\frac1{8\pi^2\sqrt{\alpha\beta}}
+\int_{|e|/L<|U|<L}\frac{\dd U}{|U|}\\
+&=\frac1{4\pi^2\sqrt{\alpha\beta}}\log\frac{L^2}{|e|}\\
+&=\boxed{\frac1{\pi^2\sqrt3\gamma a^2}
+\log\frac{E_c}{|E-E_Q|},\qquad E_c=L^2.}
+\end{align*}
+The coefficient of the logarithm is fixed by the local curvatures. The cutoff scale and nonsingular background depend on the chosen patch and higher-order terms. The lower-band saddle has the same singular coefficient about $E_Q=\epsilon_p-\gamma$.
+
+This counts a single saddle patch and one spin. Multiply by spin or distinct-saddle multiplicities only when summing those contributions, and multiply by $A_c$ for DOS per cell. A patch centered on a zone edge is understood on the reciprocal-space torus, or split and translated into the first zone; it must not be counted twice. The logarithmic saddle singularity differs from the constant step at $\Gamma$ and from the linear, vanishing DOS at a Dirac point.
+
+\section*{Primary references and verification scope}
+The calculations of reciprocal vectors, Hessians, and local DOS are derived from the question's formulas. For the model and density-functional foundations, see
+\href{https://doi.org/10.1103/PhysRev.71.622}{Wallace, The Band Theory of Graphite (1947)},
+\href{https://doi.org/10.1103/PhysRev.136.B864}{Hohenberg and Kohn, Inhomogeneous Electron Gas (1964)},
+and
+\href{https://doi.org/10.1103/PhysRev.140.A1133}{Kohn and Sham, Self-Consistent Equations Including Exchange and Correlation Effects (1965)}.
+The polarized-gas comparison is explicitly a uniform Hartree-Fock calculation and is not presented as an exact correlated phase diagram.

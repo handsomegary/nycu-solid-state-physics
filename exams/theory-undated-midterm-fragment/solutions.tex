@@ -1,0 +1,212 @@
+\chapter{Solid State Theory: Undated Midterm Fragment}
+\label{s:theory-undated-midterm-fragment}
+\begin{sourceNote}
+Question 2 lacks its defining model. Its numerical answers cannot be recovered uniquely. The conditional method below is an additional study aid, not a claim about the missing original problem. Questions 3--7 can be answered from the surviving text. All band curvatures and density-of-states factors below are derived from the printed dispersion, independently of the handwritten references.
+\end{sourceNote}
+
+\section*{2. What can and cannot be inferred}
+Band gaps and effective masses depend on the Hamiltonian. Without the potential or the missing model parameters, there is no unique answer to any of the three subparts. In particular, the list of requested quantities does not specify whether the problem uses a nearly-free-electron, tight-binding, or other model.
+
+\textbf{Conditional example: weak one-dimensional periodic potential.}
+Suppose, in addition to the surviving text, that one is given
+\[
+V(x)=\sum_{n\in\mathbb Z}V_{nG}\ee^{\ii nGx},\qquad G=\frac{2\pi}{a},
+\qquad V_{-nG}=V_{nG}^*.
+\]
+At the first free-electron crossing, the waves $k=G/2$ and $k-G=-G/2$ are coupled by $V_G$. Their $2\times2$ Hamiltonian has equal diagonal terms at the crossing and off-diagonal terms $V_G,V_G^*$, so the leading first gap is
+\[
+\Delta_1\simeq2|V_G|.
+\]
+The crossing of $+G$ and $-G$ involves $V_{2G}$, hence the leading direct second gap is $\Delta_2\simeq2|V_{2G}|$. If a Fourier coefficient vanishes, a higher-order effective coupling can still open a gap. A zero first-order expression is not proof of an exact zero gap.
+
+For the first crossing let $k=G/2+q$, $B=\hbar^2/(2m)$, $K=G/2$, and $v=|V_G|>0$. Diagonalizing the two-wave matrix gives
+\[
+E_\pm(q)=V_0+B(K^2+q^2)\pm\sqrt{v^2+4B^2K^2q^2}.
+\]
+Expanding the lower branch at $q=0$,
+\[
+E_-(q)=V_0+BK^2-v+
+\left(B-\frac{2B^2K^2}{v}\right)q^2+O(q^4),
+\]
+so the electron curvature mass obeys
+\[
+\boxed{\frac1{m^*}=\frac1{\hbar^2}E_-''(0)
+=\frac1m-\frac{\hbar^2G^2}{4m^2|V_G|}.}
+\]
+For a weak potential the curvature is negative, as expected at the top of the lower band; the corresponding hole mass is positive. These formulas require an isolated weak-potential crossing and are not numerical answers to the cropped question.
+
+\section*{3. One-orbital nearest-neighbor chain}
+Take orthonormal localized orbitals $\ket n$ at $x=na$, on-site matrix element $\epsilon_0$, and real nearest-neighbor hopping $\gamma<0$:
+\[
+H=\epsilon_0\sum_n\ket n\bra n+
+\gamma\sum_n\bigl(\ket n\bra{n+1}+\ket{n+1}\bra n\bigr).
+\]
+The Bloch state is $\ket k=N^{-1/2}\sum_n\ee^{\ii kna}\ket n$. Acting with $H$ and relabelling the two hopping sums yields
+\[
+H\ket k=[\epsilon_0+\gamma\ee^{\ii ka}+\gamma\ee^{-\ii ka}]\ket k,
+\qquad E(k)=\epsilon_0+2\gamma\cos ka.
+\]
+Since $E(0)=\epsilon_0+2\gamma$,
+\[
+\boxed{E(k)=E(0)+2\gamma(\cos ka-1).}
+\]
+For $\gamma<0$, $k=0$ is a minimum, $k=\pi/a$ is a maximum, and the bandwidth is $4|\gamma|$. Near the minimum, $E(k)=E(0)-\gamma a^2k^2+O(k^4)$, giving $m^*=-\hbar^2/(2\gamma a^2)>0$.
+
+The printed phrase ``inter-orbital overlap'' must mean the hopping \emph{energy} here. A dimensionless nonorthogonal overlap $s=\braket n{n+1}$ would instead lead to a generalized eigenproblem and, in the analogous nearest-neighbor model, $E(k)=(\epsilon_0+2\gamma\cos ka)/(1+2s\cos ka)$.
+
+\section*{4. True or false}
+\textbf{(a) False.} A crystal can have multiple identical atoms in its basis. Diamond has an FCC Bravais lattice with two identical atoms at $0$ and $a(1,1,1)/4$. Their difference is not an FCC lattice vector. Translating by that displacement does not map the whole diamond lattice onto itself. Identical chemical species therefore need not be translation-equivalent basis sites.
+
+\textbf{(b) True for a point strictly outside the first zone.} By definition the first Brillouin zone is the reciprocal-space Wigner--Seitz cell
+\[
+\mathcal B_1=\{\vct k:|\vct k|\le|\vct k-\vct G|
+\text{ for every reciprocal vector }\vct G\}.
+\]
+Failure to belong to this closed cell means that some nonzero $\vct G$ satisfies $|\vct k-\vct G|<|\vct k|$. On a zone boundary equality can occur; the statement's strict comparison concerns points outside, not boundary points.
+
+\section*{5. FCC planes and planar density}
+The primitive-cell volume and reciprocal vectors are
+\begin{align*}
+\Omega&=\vct t_1\cdot(\vct t_2\times\vct t_3)=a^3/4,\\
+\vct g_1&=\frac{2\pi}{a}(-1,1,1),\quad
+\vct g_2=\frac{2\pi}{a}(1,-1,1),\quad
+\vct g_3=\frac{2\pi}{a}(1,1,-1).
+\end{align*}
+They satisfy $\vct t_i\cdot\vct g_j=2\pi\delta_{ij}$.
+
+\textbf{(a) First direction.} The stated normal is only a direction; its half-integer coefficients do not make it a reciprocal lattice vector. The shortest nonzero reciprocal vector in this direction is
+\[
+\vct G_0=\vct g_1+2\vct g_2-2\vct g_3
+=\frac{2\pi}{a}(-1,-3,5).
+\]
+The integer triple $(1,2,-2)$ is primitive. For $\vct R=n_1\vct t_1+n_2\vct t_2+n_3\vct t_3$, the plane index is $n_1+2n_2-2n_3$, which runs through every integer. Hence successive occupied planes obey $\vct G_0\cdot\vct R=2\pi\ell$, and
+\[
+\boxed{d=\frac{2\pi}{|\vct G_0|}=\frac a{\sqrt{35}}.}
+\]
+Using $2\pi$ divided by the length of the original half-vector would incorrectly skip every other occupied plane.
+
+\textbf{(b) Density.} There is one point per primitive volume, so the volume density is $1/\Omega=4/a^3$. Dividing space into layers separated by $d$ gives
+\[
+\boxed{\rho_{2D}=\frac d\Omega=\frac4{a^2\sqrt{35}}.}
+\]
+An independent check is the in-plane primitive basis
+\[
+\vct u=-2\vct t_1+\vct t_2,\qquad
+\vct v=2\vct t_1+\vct t_3.
+\]
+Every integer solution of $n_1+2n_2-2n_3=0$ is an integer combination of these vectors. Their cell area is $|\vct u\times\vct v|=a^2\sqrt{35}/4$, confirming the reciprocal density.
+
+\textbf{(c) Direct-space normal.} Here
+\[
+\vct t_1+2\vct t_2-2\vct t_3=\frac a2(0,-1,3).
+\]
+The shortest reciprocal vector along this direction is
+\[
+\vct G_1=2\vct g_1+3\vct g_2-\vct g_3
+=\frac{2\pi}{a}(0,-2,6).
+\]
+Its primitive integer coefficients $(2,3,-1)$ show that no shorter collinear reciprocal vector is allowed. Thus
+\[
+\boxed{d_1=\frac a{\sqrt{40}}=\frac a{2\sqrt{10}}.}
+\]
+The vector $(2\pi/a)(0,-1,3)$ has mixed odd/even Cartesian indices and is not a reciprocal vector of FCC.
+
+\section*{6. Honeycomb critical points and density of states}
+Set $S(\vct k)=|F_{\vct k}|^2$ and $E_\pm=\varepsilon_p\pm\gamma\sqrt S$. Away from $S=0$,
+\[
+\nabla E_\pm=\pm\frac{\gamma}{2\sqrt S}\nabla S.
+\]
+One must not apply this quotient at a zero of $S$ without a local expansion.
+
+\textbf{(a) Classification.} At $\Gamma$, expanding both cosines gives
+\[
+S(\vct q)=9-\frac{3a^2}{2}(q_x^2+q_y^2)+O(q^4),\qquad
+|F|=3-\frac{a^2}{4}(q_x^2+q_y^2)+O(q^4).
+\]
+Therefore
+\[
+E_\pm(\Gamma+\vct q)=\varepsilon_p\pm3\gamma
+\mp\frac{\gamma a^2}{4}(q_x^2+q_y^2)+O(q^4).
+\]
+Both bands have zero gradient. The lower band has a minimum ($M_0$); the upper band has a maximum ($M_2$), where the Morse index counts negative Hessian eigenvalues.
+
+At $Q=(\pi/a,\pi/(\sqrt3a))$, write $\vct k=Q+\vct q$. The cosine factors vanish at $Q$, and direct expansion yields
+\[
+S=1+a^2q_x^2+\sqrt3a^2q_xq_y+O(q^4),\qquad
+|F|=1+\frac{a^2}{2}q_x^2+\frac{\sqrt3a^2}{2}q_xq_y+O(q^4).
+\]
+Consequently the Hessian of $|F|$ is
+\[
+H_{|F|}=a^2\begin{pmatrix}1&\sqrt3/2\\\sqrt3/2&0\end{pmatrix},
+\qquad\lambda=\frac{3a^2}{2},\ -\frac{a^2}{2}.
+\]
+In orthonormal principal coordinates $(u,v)$ this becomes
+\[
+E_\pm(Q+\vct q)=\varepsilon_p\pm\gamma
+\pm\frac{\gamma a^2}{4}(3u^2-v^2)+O(q^4).
+\]
+Thus both bands have an $M_1$ saddle. The mixed derivative is essential; the trace of the Hessian alone cannot distinguish a saddle from an extremum.
+
+At $P=(4\pi/(3a),0)$, $S(P)=0$. Expanding $S$ gives
+\[
+S(P+\vct q)=\frac{3a^2}{4}|\vct q|^2+O(|q|^3),\qquad
+E_\pm=\varepsilon_p\pm c|\vct q|+O(q^2),\quad c=\frac{\sqrt3\gamma a}{2}.
+\]
+This is a Dirac contact. Each energy-ordered branch has a conical cusp, so its gradient is undefined exactly at the contact. It is not an ordinary differentiable stationary point of Morse type. The directional slopes are finite and direction-dependent; an infinite gradient inferred by manipulating $0/0$ is incorrect. The direct band gap there is zero.
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Point & $|F|$ & Lower band & Upper band\\
+\midrule
+$\Gamma$ & 3 & Minimum, $M_0$ & Maximum, $M_2$\\
+$Q$ & 1 & Saddle, $M_1$ & Saddle, $M_1$\\
+$P$ & 0 & Dirac contact & Dirac contact\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{(b) Choose the lower-band minimum at $\Gamma$.}
+Let $E_0=\varepsilon_p-3\gamma$ and $\alpha=\gamma a^2/4$. Define the DOS per physical area, including $g_s$ spin states, by
+\[
+\frac{D(E)}A=\frac{g_s}{(2\pi)^2}\int\dd^2q\,
+\delta(E-E_0-\alpha q^2).
+\]
+For an energy close enough to the edge that the contour stays in the chosen neighborhood,
+\begin{align*}
+\frac{D_\Gamma(E)}A
+&=\frac{g_s}{(2\pi)^2}\,2\pi\int_0^\infty q\dd q\,
+\delta(E-E_0-\alpha q^2)\\
+&=\frac{g_s}{4\pi\alpha}\Theta(E-E_0)
+=\boxed{\frac{g_s}{\pi\gamma a^2}\Theta(E-E_0)}.
+\end{align*}
+For spin degeneracy two, this is $2/(\pi\gamma a^2)$ above the edge and zero below. The total DOS is this result multiplied by area $A$. Near the upper-band maximum $E_2=\varepsilon_p+3\gamma$, the same coefficient multiplies $\Theta(E_2-E)$. These are local edge formulas, not constants throughout the full band.
+
+For comparison, one Dirac valley has
+\[
+\frac{D_P(E)}A=\frac{g_s|E-\varepsilon_p|}{2\pi c^2}
+=\frac{2g_s|E-\varepsilon_p|}{3\pi\gamma^2a^2}.
+\]
+Counting both inequivalent valleys adds a factor of two; one must not count six full independent valleys merely because the hexagonal zone has six corners. A saddle at $Q$ gives a logarithmic local singularity. With $A_q=3\gamma a^2/4$ and $B_q=\gamma a^2/4$, its leading form per saddle and per band is
+\[
+\frac{D_Q(E)}A\sim\frac{g_s}{4\pi^2\sqrt{A_qB_q}}
+\log\frac{E_c}{|E-E_Q|},
+\]
+where the cutoff $E_c$ depends on the chosen neighborhood. A two-dimensional saddle is not described by the step function of a quadratic minimum.
+
+\section*{7. Bloch theorem and its meaning}
+For a one-electron Hamiltonian with a Bravais-periodic potential,
+\[
+V(\vct r+\vct R)=V(\vct r),
+\]
+the lattice-translation operators commute with the Hamiltonian and with one another. The eigenstates can be chosen to be simultaneous translation eigenstates:
+\[
+\psi_{n\vct k}(\vct r+\vct R)=\ee^{\ii\vct k\cdot\vct R}
+\psi_{n\vct k}(\vct r).
+\]
+Writing $u_{n\vct k}(\vct r)=\ee^{-\ii\vct k\cdot\vct r}\psi_{n\vct k}(\vct r)$ then gives
+\[
+\boxed{\psi_{n\vct k}(\vct r)=\ee^{\ii\vct k\cdot\vct r}u_{n\vct k}(\vct r),
+\qquad u_{n\vct k}(\vct r+\vct R)=u_{n\vct k}(\vct r).}
+\]
+The label $\vct k$ is defined modulo a reciprocal lattice vector and may be restricted to the first Brillouin zone. Bloch's theorem does not assert that the full wavefunction is lattice-periodic, nor that the electron is a free particle; the periodic factor encodes the crystal potential.

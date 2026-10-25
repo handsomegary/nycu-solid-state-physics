@@ -1,0 +1,16 @@
+.build/
+qa/
+__pycache__/
+*.pyc
+*.aux
+*.log
+*.out
+*.toc
+*.xdv
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.zip
+*.jpg
+*.jpeg
+*.png
