@@ -10,8 +10,8 @@ def main():
     scripts = sorted(path for folder in ('tools', 'exams')
                      for path in (ROOT / folder).rglob('verify_*.py')
                      if path.name != 'verify_archive.py')
-    if len(scripts) < 4:
-        raise SystemExit('Expected verification scripts for all four editorial groups')
+    if len(scripts) != 5 or ROOT / 'tools/verify_2026.py' not in scripts:
+        raise SystemExit('Expected five mathematical verification scripts, including verify_2026.py')
     for script in scripts:
         print(f'Checking {script.relative_to(ROOT).as_posix()}', flush=True)
         subprocess.run([sys.executable, str(script)], cwd=ROOT, check=True)

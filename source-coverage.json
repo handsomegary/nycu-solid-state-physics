@@ -1,6 +1,6 @@
 {
-  "source_file_count": 50,
-  "unique_file_hash_count": 49,
+  "source_file_count": 51,
+  "unique_file_hash_count": 50,
   "description": "Every supplied file is accounted for. Source identifiers are anonymous. Only typeset questions and independently written solutions are published.",
   "files": [
     {
@@ -491,6 +491,18 @@
         "physics-2015-06-final"
       ],
       "duplicate_of": "S2-045"
+    },
+    {
+      "id": "S3-051",
+      "collection": 3,
+      "format": "pdf",
+      "role": "original questions with supplied answers; questions typeset and solutions independently derived",
+      "exam_ids": [
+        "theory-2026-05-midterm-ii"
+      ],
+      "pages": 6,
+      "questions": "1-7, complete; printed weights total 100%",
+      "note": "The supplied answers are reference material, not an authoritative key. The original PDF is excluded from publication."
     }
   ]
 }

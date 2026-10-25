@@ -14,3 +14,8 @@ __pycache__/
 *.jpg
 *.jpeg
 *.png
+
+# Publish only the two generated books; original source PDFs stay private.
+*.[pP][dD][fF]
+!/questions/questions.pdf
+!/solutions/solutions.pdf

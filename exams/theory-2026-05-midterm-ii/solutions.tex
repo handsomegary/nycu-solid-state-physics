@@ -1,0 +1,370 @@
+\chapter{Solid State Theory: Midterm II, May 11, 2026}
+\label{s:theory-2026-05-midterm-ii}
+\begin{sourceNote}
+These solutions are independently derived and checked against the supplied answers. The small Evjen cell gives an approximation, radius rules require a structural model, the ionic charge-transfer estimate must be distinguished from an unbound-pair gap, and the conducting dielectric function requires care at zero frequency. The original answer PDF is not reproduced.
+\end{sourceNote}
+Throughout this chapter set $C=e^2/(4\pi\varepsilon_0)$ in SI units. The question's shorthand $e^2/R$ therefore means $C/R$. Ions are taken to have charges $\pm e$ in the simple 1:1 ionic model. The time convention for response functions is $\ee^{-\ii\omega t}$, with damping rate $\gamma>0$.
+
+\section*{1. Evjen boundary weights}
+For NaCl the nearest unlike-ion distance is $R_0=a/2$. Center the specified cube on a reference ion and write the surrounding sites as
+\[
+\vct r=R_0(i,j,k),\qquad i,j,k\in\{-1,0,1\}.
+\]
+Signs alternate with $i+j+k$. In an Evjen sum, an ion on a face has weight $1/2$, one on an edge has weight $1/4$, and one at a corner has weight $1/8$. These sharing factors make the complete weighted cell electrically neutral when the central ion is included.
+
+Taking the central ion to be positive, unlike ions contribute positively to the conventional positive Madelung constant. The shells inside this cube are
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+Position & Distance & Number & Weight & Signed total\\
+\midrule
+Face centers & $R_0$ & 6 & $1/2$ & $+3$\\
+Edge centers & $\sqrt2R_0$ & 12 & $1/4$ & $-3$\\
+Corners & $\sqrt3R_0$ & 8 & $1/8$ & $+1$\\
+Outside this cube & $2R_0$ & 0 & --- & $0$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The reference ion is excluded from its own potential. Thus
+\[
+\boxed{(n_1,n_2,n_3,n_4)=(3,-3,1,0)},\qquad
+\boxed{\alpha_M^{\rm Evjen}=3-\frac3{\sqrt2}+\frac1{\sqrt3}\simeq1.45603.}
+\]
+The weighted charge check is $1-3+3-1=0$. The absence of the $2R_0$ shell follows from the specified cube size, not from a cancellation of six full second-axis neighbors. This smallest Evjen cell is quite crude: the converged NaCl value is about $1.74756$. Enlarging the neutral weighted cube, rather than interpreting the first result as exact, improves the estimate.
+
+\section*{2. What radius ratios do and do not determine}
+\subsection*{(a) Equal radii in the elementary ionic model}
+Assume a 1:1 salt with unlike ions in contact and compare common structures using their Madelung energies. Both CsCl and NaCl can attain the same nearest unlike-ion distance
+\[
+R=R_A+R_C=2R_A.
+\]
+Their Madelung constants, with this nearest-distance normalization, are approximately
+\[
+\alpha_{\rm CsCl}=1.76267,\qquad \alpha_{\rm NaCl}=1.74756.
+\]
+At equal $R$, $-\alpha C/R$ is slightly more negative for CsCl, which provides eight unlike nearest neighbors rather than six. The expected answer in this model is therefore
+\[
+\boxed{\text{CsCl structure, within the stated hard-sphere/Madelung comparison}.}
+\]
+Equal radii alone do not determine the stable structure of every real material. Short-range repulsion, stoichiometry, covalency, pressure, and entropy can change the comparison. The radius argument is a model-based tendency, not a universal structure theorem.
+
+\subsection*{(b) Exceeding the contact threshold does not forbid CsCl}
+Put $r=R_A/R_C>1$ and let $a_c$ be the CsCl cubic edge. The nearest unlike-ion distance is $R=\sqrt3a_c/2$. Like ions on the corner simple-cubic sublattice must not overlap, so $a_c\ge2R_A$; the other sublattice similarly requires $a_c\ge2R_C$. Together with the unlike-ion constraint,
+\[
+R_{\rm CsCl}^{\min}=\max(R_A+R_C,\sqrt3R_A,\sqrt3R_C).
+\]
+Unlike ions can remain in contact only if
+\[
+R_A+R_C\ge\sqrt3R_A
+\quad\Longleftrightarrow\quad
+r\le\frac1{\sqrt3-1}=\frac{\sqrt3+1}{2}.
+\]
+When $r$ exceeds this threshold, the CsCl arrangement is still geometrically possible: it expands to $R=\sqrt3R_A>R_A+R_C$. What is lost is unlike-ion contact at the minimum nonoverlapping cell size.
+
+There is even a small interval just above the threshold where its larger Madelung constant can compensate for the larger separation. In NaCl,
+\[
+R_{\rm NaCl}^{\min}=\max(R_A+R_C,\sqrt2R_A,\sqrt2R_C),
+\]
+so near the CsCl threshold the NaCl separation remains $R_A+R_C$. Comparing only Coulomb energies gives the CsCl preference when
+\[
+\frac{\alpha_{\rm CsCl}}{\sqrt3r}>
+\frac{\alpha_{\rm NaCl}}{r+1}
+\quad\Longleftrightarrow\quad
+r<\frac{\alpha_{\rm CsCl}}
+{\sqrt3\alpha_{\rm NaCl}-\alpha_{\rm CsCl}}\simeq1.394.
+\]
+Since $(\sqrt3+1)/2\simeq1.366$, this supplies an explicit model example with a ratio greater than the threshold. The answer to ``is it possible?'' is \textbf{yes}; it is not a claim that CsCl is favored for every larger ratio or after all energetic contributions are included.
+
+\section*{3. Cohesion, bulk modulus, and an ionic excitation estimate}
+\subsection*{(a) Born--Land\'e power-law model and energy reference}
+For $N$ ion pairs, define the signed energy per pair relative to infinitely separated free ions:
+\[
+\boxed{u(R)=\frac{U(R)}N=\frac{\lambda}{R^n}-\frac{\alpha_M C}{R},
+\qquad \lambda>0,\quad n>1.}
+\]
+The first term represents short-range repulsion and the second the electrostatic Madelung attraction. At equilibrium $E_{\rm coh}=u(R_0)<0$ in this convention. If ``cohesive energy'' is instead tabulated as a positive dissociation energy, use $D=-E_{\rm coh}>0$. An energy relative to free neutral atoms differs by the ionization/electron-affinity terms and cannot be substituted without converting the reference.
+
+Setting $u'(R_0)=0$ gives
+\[
+-\frac{n\lambda}{R_0^{n+1}}+\frac{\alpha_M C}{R_0^2}=0,
+\qquad
+\lambda=\frac{\alpha_M C}{n}R_0^{n-1}.
+\]
+With $E_M=-\alpha_M C/R_0<0$,
+\[
+u(R)=E_M\left[\frac{R_0}{R}-\frac1n
+\left(\frac{R_0}{R}\right)^n\right],\qquad
+\boxed{E_{\rm coh}=E_M\left(1-\frac1n\right).}
+\]
+
+\subsection*{(b) Eliminate the empirical parameters}
+A conventional NaCl cube has edge $2R$ and contains four ion pairs. Thus the volume per pair is $v=V/N=(2R)^3/4=2R^3$. Pressure and bulk modulus follow from energy derivatives at fixed $N$:
+\[
+P=-\frac{\dd u}{\dd v}=-\frac{u'(R)}{6R^2},\qquad
+B=-v\frac{\dd P}{\dd v}=v\frac{\dd^2u}{\dd v^2}.
+\]
+Because $u'(R_0)=0$ and $\dd v/\dd R=6R^2$,
+\[
+B_0=\frac{u''(R_0)}{18R_0}.
+\]
+Differentiating the pair energy twice and using the equilibrium relation yields
+\[
+u''(R_0)=\frac{(n-1)\alpha_M C}{R_0^3}
+=-\frac{(n-1)E_M}{R_0^2},
+\qquad
+B_0=-\frac{(n-1)E_M}{18R_0^3}.
+\]
+The cohesive-energy relation determines
+\[
+n=\frac{E_M}{E_M-E_{\rm coh}},\qquad
+n-1=\frac{E_{\rm coh}}{E_M-E_{\rm coh}}.
+\]
+Consequently
+\[
+\boxed{B_0=\frac{E_M E_{\rm coh}}
+{18R_0^3(E_{\rm coh}-E_M)}.}
+\]
+For the positive dissociation convention this is
+\[
+\boxed{B_0=\frac{|E_M|D}{18R_0^3(|E_M|-D)},\qquad 0<D<|E_M|.}
+\]
+Both forms are positive for the stable model and have units of energy per volume. The result assumes the same power-law model and energy reference used in part (a); it is not a model-independent inference from two measured quantities.
+
+\subsection*{(c) Distinguish a separated pair from a bound charge-transfer pair}
+Write $A=\Delta(\mathrm{Cl}^-)>0$ for the electron affinity of neutral Cl, equivalently the electron detachment energy of isolated Cl$^-$, and $I=\Delta(\mathrm{Na})>0$ for the ionization energy of neutral Na. Transferring an electron from Cl$^-$ to Na$^+$ costs $A-I$ in the isolated-ion bookkeeping: detachment costs $A$, while attachment to Na$^+$ releases $I$.
+
+At either lattice site, removing one unit of favorable ionic charge costs $\alpha_M C/R_0$. Creating well-separated electron and hole defects therefore has the rigid-ion estimate
+\[
+\boxed{E_{\rm separated}\approx A-I+\frac{2\alpha_M C}{R_0}.}
+\]
+If the transfer instead creates a neighboring electron--hole pair, their mutual attraction lowers the energy by $C/R_0$:
+\[
+\boxed{E_{\rm CT}\approx A-I+\frac{(2\alpha_M-1)C}{R_0}.}
+\]
+This is the expression given as $\varepsilon_G$ in the supplied answer. It includes a nearest-neighbor binding correction. It is therefore best identified as a localized charge-transfer or excitonic excitation estimate, rather than automatically equated with the unbound electron--hole continuum gap. More generally the same rigid-ion argument for pair separation $d$ gives
+\[
+E(d)\approx A-I+\frac{2\alpha_M C}{R_0}-\frac C d.
+\]
+The distinction follows directly from the cross term in the electrostatic energy of the two changed site charges. Electronic polarization, lattice relaxation, screening of their attraction, and band dispersion are omitted by this simple model. No numerical gap is determined because no numerical values of $A,I,R_0$ are supplied.
+
+\section*{4. Recovering the continuum gap from two exciton levels}
+Assume the two peaks are the $n=1$ and $n=2$ members of one three-dimensional hydrogenic exciton series. With continuum band gap $E_g$ and ground-state binding energy $E_B>0$,
+\[
+\Delta_n=E_g-\frac{E_B}{n^2},\qquad
+\Delta_1=E_g-E_B,\quad \Delta_2=E_g-\frac{E_B}{4}.
+\]
+Subtracting gives $\Delta_2-\Delta_1=3E_B/4$. Therefore
+\[
+\boxed{E_B=\frac43(\Delta_2-\Delta_1)},\qquad
+\boxed{E_g=\frac{4\Delta_2-\Delta_1}{3}.}
+\]
+The largest binding energy belongs to $n=1$. The result satisfies $E_g-\Delta_2=E_B/4>0$, so the continuum lies above both observed bound-state peaks.
+
+\begin{center}
+\begin{tikzpicture}[>=Latex]
+\draw[->] (0,0)--(0,3.1) node[above] {Energy};
+\draw[thick] (.4,.5)--(3,.5) node[right] {$\Delta_1=E_g-E_B$};
+\draw[thick] (.4,2)--(3,2) node[right] {$\Delta_2=E_g-E_B/4$};
+\draw[thick,dashed] (.4,2.5)--(3,2.5) node[right] {$E_g$: continuum edge};
+\draw[<->,blue!65!black] (1,.55)--(1,2.45) node[midway,right] {$E_B$};
+\end{tikzpicture}
+\end{center}
+This inference requires the series assignment and its $1/n^2$ spectrum. Two unrelated optical peaks, different exciton series, or a nonhydrogenic spectrum would not determine $E_g$ and $E_B$ from these two energies alone.
+
+\section*{5. Complete screening is a statement about total charge}
+Use the Fourier convention
+\[
+\rho(\vct q)=\int\dd^3r\,\ee^{-\ii\vct q\cdot\vct r}\rho(\vct r),
+\qquad
+\rho(\vct r)=\int\frac{\dd^3q}{(2\pi)^3}
+\ee^{\ii\vct q\cdot\vct r}\rho(\vct q).
+\]
+For an external point charge $Ze$ at the origin,
+$\rho_{\rm ext}(\vct r)=Ze\delta^{(3)}(\vct r)$ and
+$\rho_{\rm ext}(\vct q)=Ze$. In a homogeneous linear dielectric, the screened electrostatic potential is $\phi=\phi_{\rm ext}/\epsilon(q,0)$. Applying Poisson's equation to both potentials gives the same relation for the total charge density:
+\[
+\rho_{\rm tot}(\vct q)=\frac{Ze}{\epsilon(q,0)},\qquad
+\rho_{\rm ind}(\vct q)=Ze\left[\frac1{\epsilon(q,0)}-1\right].
+\]
+The integrated induced charge is its zero-wavevector component:
+\[
+Q_{\rm ind}=\int\rho_{\rm ind}(\vct r)\dd^3r
+=Ze\left[\lim_{q\to0}\frac1{\epsilon(q,0)}-1\right].
+\]
+For the stated metallic static limit, the inverse dielectric function tends to zero. Thus
+\[
+\boxed{Q_{\rm ind}=-Ze,\qquad Q_{\rm ext}+Q_{\rm ind}=0.}
+\]
+The external charge is completely compensated by the induced screening cloud. This does not mean the local charge or electric field is zero at every point. The argument concerns the static bulk response and its integrated charge; the static limit has already been taken before $q\to0$.
+
+\section*{6. Thomas--Fermi screening and its short-distance defect}
+\subsection*{(a) Dielectric function}
+The linear Thomas--Fermi approximation replaces the static density response by its long-wavelength value:
+\[
+\boxed{\epsilon_{\rm TF}(q)=1+\frac{k_{\rm TF}^2}{q^2}.}
+\]
+In SI units, $k_{\rm TF}^2=(e^2/\varepsilon_0)(\partial n/\partial\mu)$ for the electron gas. A positive compressibility gives $k_{\rm TF}^2>0$. Inserting this expression into the result of Question 5 yields
+\[
+\rho_{\rm ind}(\vct q)=-Ze\frac{k_{\rm TF}^2}{q^2+k_{\rm TF}^2}.
+\]
+The minus sign comes directly from $1/\epsilon-1$, which is negative. It must not be inserted a second time in front of that difference.
+
+\subsection*{(b) Fourier inversion and the divergence}
+For $r>0$, spherical integration gives
+\begin{align*}
+\int\frac{\dd^3q}{(2\pi)^3}
+\frac{\ee^{\ii\vct q\cdot\vct r}}{q^2+k_{\rm TF}^2}
+&=\frac1{2\pi^2r}\int_0^\infty
+\frac{q\sin(qr)}{q^2+k_{\rm TF}^2}\dd q\\
+&=\frac{\ee^{-k_{\rm TF}r}}{4\pi r}.
+\end{align*}
+Hence
+\[
+\boxed{\rho_{\rm ind}(r)=-\frac{Ze k_{\rm TF}^2}{4\pi r}
+\ee^{-k_{\rm TF}r}.}
+\]
+For a positive external charge, the induced electron \emph{number} density is
+\[
+\boxed{\delta n(r)=-\frac{\rho_{\rm ind}(r)}e
+=\frac{Zk_{\rm TF}^2}{4\pi r}\ee^{-k_{\rm TF}r}
+\longrightarrow+\infty\quad(r\to0^+).}
+\]
+The singularity is $1/r$. It is integrable in three dimensions:
+\[
+\int\rho_{\rm ind}\dd^3r
+=-Ze k_{\rm TF}^2\int_0^\infty r\ee^{-k_{\rm TF}r}\dd r
+=-Ze.
+\]
+Thus an infinite local density does not imply an infinite total screening charge. The divergence exposes the failure of extrapolating a linear, long-wavelength response to arbitrarily short distances from a point charge. Atomic structure, nonlocal response, and nonlinear effects are outside that approximation. The supplied answer's final negative induced-charge density is consistent; its intermediate extra minus before $(1/\epsilon-1)$ is not.
+
+\section*{7. Plasmons, energy loss, and causal dispersion relations}
+\subsection*{(a) Long-wavelength plasmon branch}
+Longitudinal collective modes are zeros of the dielectric function. Multiplying the stated expression by $\omega^4$ gives
+\[
+\omega^4-\omega_p^2\omega^2-\frac35\omega_p^2v_F^2q^2=0.
+\]
+Solving the quadratic equation in $x=\omega^2$ and choosing the positive branch connected to $\omega_p$ at $q=0$ yields
+\[
+\omega^2(q)=\frac{\omega_p^2}{2}
+\left[1+\sqrt{1+\frac{12v_F^2q^2}{5\omega_p^2}}\right].
+\]
+This closed form solves the \emph{truncated} dielectric expression; it does not fix the higher-order terms of the full electron-gas dispersion. Expanding consistently to second order gives
+\[
+\boxed{\omega^2(q)=\omega_p^2+\frac35v_F^2q^2+O(q^4),}
+\]
+\[
+\boxed{\omega(q)=\omega_p\left[1+\frac3{10}
+\frac{v_F^2q^2}{\omega_p^2}+O(q^4)\right].}
+\]
+The expansion assumes $v_Fq\ll\omega_p$. The other algebraic root has $\omega^2<0$ for $q\ne0$ and lies outside the high-frequency approximation used to obtain the dielectric function; it is not a second physical plasmon branch of this approximation.
+
+\subsection*{(b) Energy-loss function}
+For real positive frequency,
+\[
+\frac1{\epsilon(\omega)}
+=\frac{\omega^2+\ii\gamma\omega}
+{\omega^2-\omega_p^2+\ii\gamma\omega}.
+\]
+Multiply numerator and denominator by the complex conjugate of the denominator. The imaginary numerator is
+$\gamma\omega(\omega^2-\omega_p^2)-\gamma\omega^3
+=-\gamma\omega\omega_p^2$. Therefore
+\[
+\boxed{L(\omega)=-\operatorname{Im}\frac1{\epsilon(\omega)}
+=\frac{\gamma\omega\omega_p^2}
+{(\omega^2-\omega_p^2)^2+\gamma^2\omega^2}.}
+\]
+It is nonnegative for $\omega>0$ and $\gamma>0$. This longitudinal loss function is distinct from $\operatorname{Im}\epsilon$. For weak damping it has a narrow resonance near $\omega_p$; the maximum need not be exactly at $\omega_p$ for finite damping.
+
+\subsection*{(c) Ordinary Kramers--Kronig relations}
+Let $\epsilon=\epsilon_1+\ii\epsilon_2$ and assume that $\epsilon(z)-1$ is a causal response analytic in the upper half of the complex frequency plane, decays sufficiently at infinity, and has nonsingular boundary values for the following ordinary-function formulas. With the chosen $\ee^{-\ii\omega t}$ convention,
+\begin{align*}
+\boxed{\epsilon_1(\omega)-1
+=\frac1\pi\operatorname{PV}\int_{-\infty}^{\infty}
+\frac{\epsilon_2(\omega')}{\omega'-\omega}\dd\omega',}\\
+\boxed{\epsilon_2(\omega)
+=-\frac1\pi\operatorname{PV}\int_{-\infty}^{\infty}
+\frac{\epsilon_1(\omega')-1}{\omega'-\omega}\dd\omega'.}
+\end{align*}
+Here PV denotes the Cauchy principal value. For a real time-domain response, $\epsilon_1$ is even and $\epsilon_2$ is odd, giving the equivalent positive-frequency relations
+\begin{align*}
+\epsilon_1(\omega)-1
+&=\frac2\pi\operatorname{PV}\int_0^\infty
+\frac{\omega'\epsilon_2(\omega')}{\omega'^2-\omega^2}\dd\omega',\\
+\epsilon_2(\omega)
+&=-\frac{2\omega}{\pi}\operatorname{PV}\int_0^\infty
+\frac{\epsilon_1(\omega')-1}{\omega'^2-\omega^2}\dd\omega'.
+\end{align*}
+A different high-frequency dielectric background replaces the number 1. Singular conductivity contributions require a subtraction or a distributional treatment, as in part (d).
+
+\subsection*{(d) Drude is causal, but the zero-frequency pole matters}
+The analytic continuation of the stated Drude function is
+\[
+\epsilon(z)=1-\frac{\omega_p^2}{z(z+\ii\gamma)}.
+\]
+Its poles are at $z=0$ and $z=-\ii\gamma$, not in the open upper half-plane. The pole on the real-axis boundary represents DC conduction. It does \emph{not} by itself make the response acausal. The precise answer is:
+\begin{quote}
+The Drude dielectric function satisfies causal dispersion relations with the zero-frequency conductivity term treated correctly. Applying the nonsingular ordinary-function formulas from part (c) to its smooth off-zero real and imaginary parts without that term is incomplete.
+\end{quote}
+
+To demonstrate the correction, define
+\[
+K=\frac{\omega_p^2}{\gamma}=\frac{\sigma_{\rm dc}}{\varepsilon_0},\qquad
+\epsilon(z)-1=\frac{\ii K}{z}-\frac{\ii K}{z+\ii\gamma}.
+\]
+Subtract the singular term:
+\[
+\epsilon_{\rm reg}(z)=\epsilon(z)-\frac{\ii K}{z}
+=1-\frac{\ii K}{z+\ii\gamma}.
+\]
+This regular response obeys the ordinary relations. For real $\omega\ne0$,
+\begin{align*}
+\epsilon_1(\omega)-1&=-\frac{\omega_p^2}{\omega^2+\gamma^2},\\
+\epsilon_2(\omega)&=\frac{\omega_p^2\gamma}{\omega(\omega^2+\gamma^2)},\\
+\operatorname{Im}\epsilon_{\rm reg}(\omega)
+&=\epsilon_2(\omega)-\frac K\omega
+=-\frac{K\omega}{\omega^2+\gamma^2}.
+\end{align*}
+Restoring the subtracted pole gives, for nonzero observation frequency,
+\begin{align*}
+\boxed{\epsilon_1(\omega)-1
+=\frac2\pi\operatorname{PV}\int_0^\infty
+\frac{\omega'\epsilon_2(\omega')}{\omega'^2-\omega^2}\dd\omega',}\\
+\boxed{\epsilon_2(\omega)=\frac{K}{\omega}
+-\frac{2\omega}{\pi}\operatorname{PV}\int_0^\infty
+\frac{\epsilon_1(\omega')-1}{\omega'^2-\omega^2}\dd\omega'.}
+\end{align*}
+The first relation is unchanged because
+$\operatorname{PV}\int_0^\infty\dd\omega'/(\omega'^2-\omega^2)=0$ for $\omega\ne0$. The additional $K/\omega$ in the second is essential. It is also the correction displayed at the end of the supplied answer.
+
+For an explicit check, the ordinary inverse transform of the smooth real part produces
+$-K\omega/(\omega^2+\gamma^2)$, not the complete $\epsilon_2$. Adding $K/\omega$ recovers
+\[
+\frac K\omega-\frac{K\omega}{\omega^2+\gamma^2}
+=\frac{K\gamma^2}{\omega(\omega^2+\gamma^2)}
+=\frac{\omega_p^2\gamma}{\omega(\omega^2+\gamma^2)}.
+\]
+
+\textbf{Equivalent retarded prescription.} The boundary value is approached from $z=\omega+\ii0^+$. The identity
+\[
+\frac1{\omega+\ii0^+}=\operatorname{PV}\frac1\omega-\ii\pi\delta(\omega)
+\]
+shows that the complete distributional real part contains
+$\pi K\delta(\omega)$ in addition to $1-\omega_p^2/(\omega^2+\gamma^2)$. Keeping this zero-frequency term restores the usual distributional Kramers--Kronig pair. The pole-subtracted formulas above avoid treating the delta function explicitly when $\omega\ne0$.
+
+\textbf{A regulator is not a new physical model.} If ordinary nonsingular boundary values are desired, one can use
+\[
+\epsilon_\eta(\omega)=1-\frac{\omega_p^2}
+{(\omega+\ii\eta)(\omega+\ii\gamma)},\qquad \eta>0,
+\]
+perform the transforms, and then take $\eta\to0^+$. At any finite $\eta$, both poles are below the real axis and the ordinary relations hold. The limit at zero frequency is nonuniform, which is exactly why the pole term cannot be dropped.
+
+The alternative expression $1-\omega_p^2/(\omega+\ii\gamma/2)^2$ is also causal, but it changes the model: it has finite static permittivity $1+4\omega_p^2/\gamma^2$ and zero DC conductivity. Dropping its $\gamma^2/4$ denominator term is not justified near $\omega=0$. It should not be presented as an equivalent repair of the original conducting Drude response.
+
+\section*{Primary references and verification scope}
+The calculations above use the stated models and explicit algebra. The following sources support the conventions and physical distinctions:
+\begin{itemize}
+\item \href{https://www.nonmet.mat.ethz.ch/education/courses/Materialwissenschaft_1/Downloads_HS_2007/slides_chapter_2.pdf}{ETH Zurich, Material Science I: Crystal Chemistry}, Madelung-constant table: nearest-distance normalization for NaCl and CsCl.
+\item \href{https://doi.org/10.1103/PhysRev.166.599}{D. M. Roessler and W. C. Walker, Electronic Spectra of Crystalline NaCl and KCl (1968)}: exciton and interband absorption are distinct spectral features.
+\item \href{https://arxiv.org/abs/1003.4724}{V. B. Bobrov, S. A. Trigger, G. J. F. van Heijst, and P. P. J. M. Schram, Kramers--Kronig Relations for the Dielectric Function and the Static Conductivity of Coulomb Systems (2010)}, equations 27--28: the conductivity-pole contribution.
+\end{itemize}
+The accompanying numerical checks enumerate the Evjen cell, differentiate the pair energy with respect to volume, check spectral formulas, integrate the screening charge, and evaluate the pole-subtracted dispersion relations. These checks verify the displayed model calculations; they do not turn the approximate ionic and screening models into exact material predictions.
